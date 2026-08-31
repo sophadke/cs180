@@ -1,0 +1,306 @@
+/* ============================================================
+   Tokens
+   ============================================================ */
+:root {
+  --desktop-bg: #a8a8a0;
+  --window-bg: #ffffff;
+  --ink: #1a1a1a;
+  --line: #1a1a1a;
+  --shadow: rgba(0,0,0,0.35);
+  --stripe-a: #1a1a1a;
+  --stripe-b: #ffffff;
+  --paper: #f4f2ec;
+
+  --r1: #61bb46; /* rainbow stripe, classic 6-color apple order */
+  --r2: #fdb827;
+  --r3: #f5821f;
+  --r4: #e03a3e;
+  --r5: #963cbd;
+  --r6: #009ddc;
+
+  --font-pixel: 'Silkscreen', 'Courier New', monospace;
+  --font-mono: 'Space Mono', 'Courier New', monospace;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--desktop-bg);
+  background-image:
+    repeating-conic-gradient(var(--desktop-bg) 0% 25%, #9c9c94 0% 50%);
+  background-size: 4px 4px;
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+img { max-width: 100%; display: block; }
+
+/* ============================================================
+   Menu bar
+   ============================================================ */
+.menubar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  height: 28px;
+  padding: 0 16px;
+  background: #ffffff;
+  border-bottom: 2px solid var(--line);
+  font-family: var(--font-pixel);
+  font-size: 12px;
+}
+
+.apple-mark { font-size: 15px; margin-right: 4px; }
+
+.menu-item { color: var(--ink); opacity: 0.55; }
+.menu-item--bold { opacity: 1; font-weight: 700; }
+
+.menubar-clock {
+  margin-left: auto;
+  opacity: 0.7;
+}
+
+/* ============================================================
+   Desktop layout
+   ============================================================ */
+.desktop {
+  max-width: 880px;
+  margin: 36px auto 80px;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+}
+
+/* ============================================================
+   Window chrome
+   ============================================================ */
+.window {
+  background: var(--window-bg);
+  border: 2px solid var(--line);
+  box-shadow: 6px 6px 0 var(--shadow);
+}
+
+.titlebar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 34px;
+  padding: 0 10px;
+  border-bottom: 2px solid var(--line);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    var(--stripe-a) 0px, var(--stripe-a) 2px,
+    var(--stripe-b) 2px, var(--stripe-b) 4px
+  );
+}
+
+.titlebar--thin { height: 28px; }
+
+.titlebar-box {
+  width: 12px;
+  height: 12px;
+  background: var(--window-bg);
+  border: 2px solid var(--line);
+  flex: 0 0 auto;
+}
+
+.titlebar-title {
+  margin: 0;
+  background: var(--window-bg);
+  border: 2px solid var(--line);
+  padding: 2px 12px;
+  font-family: var(--font-pixel);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.window-body {
+  padding: 28px 30px 32px;
+}
+
+/* ============================================================
+   Hero
+   ============================================================ */
+.hero-body {
+  padding-top: 40px;
+  padding-bottom: 36px;
+}
+
+.kicker {
+  font-family: var(--font-pixel);
+  font-size: 12px;
+  margin: 0 0 18px;
+  opacity: 0.65;
+}
+
+.hero-headline {
+  font-family: var(--font-pixel);
+  font-size: clamp(28px, 5vw, 46px);
+  line-height: 1.25;
+  margin: 0 0 22px;
+  max-width: 12ch;
+}
+
+.hero-sub {
+  max-width: 52ch;
+  font-size: 17px;
+  margin: 0 0 22px;
+}
+
+.hero-byline {
+  font-size: 14px;
+  opacity: 0.7;
+  margin: 0;
+}
+
+.rainbow-bar {
+  height: 10px;
+  display: flex;
+  border-top: 2px solid var(--line);
+}
+.rainbow-bar::before,
+.rainbow-bar { }
+.rainbow-bar {
+  background: linear-gradient(
+    to right,
+    var(--r1) 0 16.66%,
+    var(--r2) 16.66% 33.33%,
+    var(--r3) 33.33% 50%,
+    var(--r4) 50% 66.66%,
+    var(--r5) 66.66% 83.33%,
+    var(--r6) 83.33% 100%
+  );
+}
+
+/* ============================================================
+   Note window (Read Me)
+   ============================================================ */
+.note-window .window-body {
+  background: var(--paper);
+}
+
+/* ============================================================
+   Project sections
+   ============================================================ */
+.folder-label {
+  font-family: var(--font-pixel);
+  font-size: 12px;
+  opacity: 0.6;
+  margin: 0 0 22px;
+}
+
+.photo-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.photo-frame {
+  margin: 0;
+}
+
+.photo-frame--wide {
+  max-width: 480px;
+  margin: 0 auto 24px;
+}
+
+.photo-slot {
+  position: relative;
+  border: 2px solid var(--line);
+  background: #e8e6df;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo-slot--gif { aspect-ratio: 4 / 3; }
+
+.photo-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-slot-caption {
+  display: none;
+  font-family: var(--font-pixel);
+  font-size: 11px;
+  text-align: center;
+  padding: 8px;
+  opacity: 0.5;
+}
+
+/* shown only when the image fails to load, i.e. placeholder is still a stub */
+.photo-slot--empty img { display: none; }
+.photo-slot--empty .photo-slot-caption { display: block; }
+.photo-slot--empty {
+  background-image: repeating-linear-gradient(
+    45deg, #d8d6cf 0, #d8d6cf 8px, #e8e6df 8px, #e8e6df 16px
+  );
+}
+
+figcaption {
+  font-size: 13px;
+  opacity: 0.7;
+  margin-top: 8px;
+  text-align: center;
+}
+
+/* ============================================================
+   Footer
+   ============================================================ */
+.footer-body {
+  text-align: center;
+  padding-top: 22px;
+  padding-bottom: 22px;
+}
+
+.footer-body p { margin: 0 0 6px; font-size: 14px; }
+.footer-small { opacity: 0.55; font-size: 12px; }
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 640px) {
+  .photo-pair {
+    grid-template-columns: 1fr;
+  }
+  .window-body {
+    padding: 20px;
+  }
+  .menubar {
+    gap: 14px;
+    font-size: 11px;
+    padding: 0 10px;
+  }
+  .menu-item:not(.menu-item--bold) {
+    display: none;
+  }
+}
+
+/* ============================================================
+   Reduced motion / accessibility
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  * { scroll-behavior: auto !important; }
+}
+
+:focus-visible {
+  outline: 3px solid var(--r6);
+  outline-offset: 2px;
+}
