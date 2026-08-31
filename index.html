@@ -1,93 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CS 180 Portfolio</title>
-<link rel="stylesheet" href="style.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.1">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000}
+    p.p3 {margin: 0.0px 0.0px 12.0px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000}
+    p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000; min-height: 14.0px}
+    li.li6 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; color: #0000e9; -webkit-text-stroke: #0000e9}
+    span.s1 {font-kerning: none}
+    span.s2 {-webkit-text-stroke: 0px #000000}
+    span.s3 {text-decoration: underline ; font-kerning: none}
+    span.s4 {font: 12.0px 'Times New Roman'; text-decoration: underline ; font-kerning: none}
+    ul.ul1 {list-style-type: disc}
+  </style>
 </head>
 <body>
-
-<!-- ===================== MENU BAR ===================== -->
-<div class="menubar">
-  <span class="menu-item menu-item--bold">CS 180 Portfolio</span>
-  <span class="menu-item">File</span>
-  <span class="menu-item">Edit</span>
-  <span class="menu-item">View</span>
-  <span class="menu-item">Special</span>
-  <span class="menubar-clock" id="clock">12:00 PM</span>
-</div>
-
-<main class="desktop">
-
-  <!-- ===================== HERO ===================== -->
-  <header class="hero-window window">
-    <div class="titlebar">
-      <span class="titlebar-box"></span>
-      <h1 class="titlebar-title">Finder</h1>
-    </div>
-    <div class="window-body hero-body">
-      <p class="kicker">CS 180 &middot; Computational Photography</p>
-      <h2 class="hero-headline">Project<br>Portfolio</h2>
-      <p class="hero-sub">A running record of assignments — cameras, pixels, and everything in between.</p>
-      <p class="hero-byline">by <strong>Your Name Here</strong> &nbsp;/&nbsp; Fall 2026</p>
-    </div>
-    <div class="rainbow-bar" aria-hidden="true"></div>
-  </header>
-
-  <!-- ===================== PROJECT LIST ===================== -->
-  <section class="window">
-    <div class="titlebar">
-      <span class="titlebar-box"></span>
-      <h2 class="titlebar-title">Projects</h2>
-    </div>
-    <div class="window-body">
-      <ul class="project-list">
-        <li>
-          <a class="project-row" href="project0.html">
-            <span class="project-icon" aria-hidden="true">🖿</span>
-            <span class="project-text">
-              <span class="project-name">Project 0 — Becoming Friends with Your Camera</span>
-              <span class="project-desc">Distance, zoom, and the center of projection, explored through selfies, a facade, and a dolly zoom.</span>
-            </span>
-            <span class="project-arrow" aria-hidden="true">&rarr;</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ===================== FOOTER ===================== -->
-  <footer class="window footer-window">
-    <div class="titlebar titlebar--thin">
-      <span class="titlebar-box"></span>
-      <h2 class="titlebar-title">Get Info</h2>
-    </div>
-    <div class="window-body footer-body">
-      <p>CS 180 — Computational Photography</p>
-      <p class="footer-small">Made with a real camera, a bit of walking back and forth, and HTML.</p>
-    </div>
-  </footer>
-
-</main>
-
-<script>
-  function updateClock() {
-    var el = document.getElementById('clock');
-    if (!el) return;
-    var d = new Date();
-    var h = d.getHours();
-    var m = d.getMinutes();
-    var ampm = h >= 12 ? 'PM' : 'AM';
-    h = h % 12; if (h === 0) h = 12;
-    var mm = m < 10 ? '0' + m : m;
-    el.textContent = h + ':' + mm + ' ' + ampm;
-  }
-  updateClock();
-  setInterval(updateClock, 30000);
-</script>
-
+<p class="p1"><span class="s1">CS 180 Portfolio File Edit View Special 12:00 PM</span></p>
+<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 24.0px Times; -webkit-text-stroke: #000000"><span class="s1"><b>Finder</b></span></h1>
+<p class="p3"><span class="s1">CS 180 · Computational Photography</span></p>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px Times; -webkit-text-stroke: #000000"><span class="s1"><b>Project<br>
+Portfolio</b></span></h2>
+<p class="p3"><span class="s1">A running record of assignments — cameras, pixels, and everything in between.</span></p>
+<p class="p3"><span class="s1">by <b>Sohum Phadke</b>  /  Fall 2026</span></p>
+<p class="p5"><span class="s1"></span><br></p>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px Times; -webkit-text-stroke: #000000"><span class="s1"><b>Projects</b></span></h2>
+<ul class="ul1">
+  <li class="li6"><span class="s2"><a href="file:///Users/sohumphadke/Desktop/cs180/project0.html"><span class="s3">🖿 Project 0 — Becoming Friends with Your Camera Distance, zoom, and the center of projection, explored through selfies, a facade, and a dolly zoom. </span><span class="s4">→</span></a></span></li>
+</ul>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; font: 18.0px Times; -webkit-text-stroke: #000000"><span class="s1"><b>Get Info</b></span></h2>
+<p class="p3"><span class="s1">CS 180 — Computational Photography</span></p>
+<p class="p3"><span class="s1">Made with a real camera, a bit of walking back and forth, and HTML.</span></p>
 </body>
 </html>
