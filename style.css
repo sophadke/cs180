@@ -57,10 +57,9 @@ img { max-width: 100%; display: block; }
   font-size: 12px;
 }
 
-.apple-mark { font-size: 15px; margin-right: 4px; }
-
-.menu-item { color: var(--ink); opacity: 0.55; }
+.menu-item { color: var(--ink); opacity: 0.55; text-decoration: none; }
 .menu-item--bold { opacity: 1; font-weight: 700; }
+a.menu-item--bold:hover { opacity: 0.7; }
 
 .menubar-clock {
   margin-left: auto;
@@ -71,9 +70,9 @@ img { max-width: 100%; display: block; }
    Desktop layout
    ============================================================ */
 .desktop {
-  max-width: 880px;
-  margin: 36px auto 80px;
-  padding: 0 20px;
+  width: 100%;
+  margin: 36px 0 80px;
+  padding: 0 40px;
   display: flex;
   flex-direction: column;
   gap: 34px;
@@ -259,6 +258,67 @@ figcaption {
   opacity: 0.7;
   margin-top: 8px;
   text-align: center;
+}
+
+/* ============================================================
+   Project list (landing page)
+   ============================================================ */
+.project-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.project-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 14px;
+  text-decoration: none;
+  color: var(--ink);
+  border: 2px solid transparent;
+  transition: border-color 0.1s ease, background-color 0.1s ease;
+}
+
+.project-list li + li .project-row {
+  border-top: 2px solid var(--line);
+}
+
+.project-row:hover,
+.project-row:focus-visible {
+  border-color: var(--line);
+  background: var(--paper);
+}
+
+.project-icon {
+  font-size: 26px;
+  flex: 0 0 auto;
+  line-height: 1;
+}
+
+.project-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.project-name {
+  font-family: var(--font-pixel);
+  font-size: 14px;
+}
+
+.project-desc {
+  font-size: 13px;
+  opacity: 0.65;
+  max-width: 64ch;
+}
+
+.project-arrow {
+  margin-left: auto;
+  flex: 0 0 auto;
+  font-size: 18px;
+  opacity: 0.5;
 }
 
 /* ============================================================

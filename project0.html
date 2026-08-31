@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project 0 — Becoming Friends with Your Camera</title>
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- ===================== MENU BAR ===================== -->
+<div class="menubar">
+  <a href="index.html" class="menu-item menu-item--bold">&larr; Projects</a>
+  <span class="menu-item">File</span>
+  <span class="menu-item">Edit</span>
+  <span class="menu-item">View</span>
+  <span class="menu-item">Special</span>
+  <span class="menubar-clock" id="clock">12:00 PM</span>
+</div>
+
+<main class="desktop">
+
+  <!-- ===================== HERO ===================== -->
+  <header class="hero-window window">
+    <div class="titlebar">
+      <span class="titlebar-box"></span>
+      <h1 class="titlebar-title">Camera.app</h1>
+    </div>
+    <div class="window-body hero-body">
+      <p class="kicker">CS 180 &middot; Project 0</p>
+      <h2 class="hero-headline">Becoming Friends<br>with Your Camera</h2>
+      <p class="hero-sub">A hands-on look at how distance, zoom, and the center of projection quietly reshape a face, a facade, and a room — three photo experiments in perspective.</p>
+      <p class="hero-byline">by <strong>Your Name Here</strong> &nbsp;/&nbsp; Fall 2026</p>
+    </div>
+    <div class="rainbow-bar" aria-hidden="true"></div>
+  </header>
+
+  <!-- ===================== INTRO ===================== -->
+  <section class="window note-window">
+    <div class="titlebar titlebar--thin">
+      <span class="titlebar-box"></span>
+      <h2 class="titlebar-title">Read Me</h2>
+    </div>
+    <div class="window-body">
+      <p>Every camera makes two decisions at once: how far it stands from the world, and how much it magnifies what it sees. Change them together and a photo can stay the same size but tell a completely different story about depth. The three experiments below isolate that relationship — first on a face, then on a building, then in one continuous move known as the dolly zoom.</p>
+    </div>
+  </section>
+
+  <!-- ===================== PART 1 ===================== -->
+  <section class="window" id="part1">
+    <div class="titlebar">
+      <span class="titlebar-box"></span>
+      <h2 class="titlebar-title">Part 1 — The Selfie: Wrong Way vs. Right Way</h2>
+    </div>
+    <div class="window-body">
+      <p class="folder-label">📁 close-up.jpg &nbsp;vs.&nbsp; 📁 stepped-back-zoomed.jpg</p>
+
+      <div class="photo-pair">
+        <figure class="photo-frame">
+          <div class="photo-slot">
+            <img src="images/part1-closeup.jpg" alt="Close-up selfie taken a few inches from the face, showing wide-angle distortion" onerror="this.parentElement.classList.add('photo-slot--empty')">
+            <span class="photo-slot-caption">drop image in here</span>
+          </div>
+          <figcaption>Close range, no zoom — camera a few inches from the face.</figcaption>
+        </figure>
+        <figure class="photo-frame">
+          <div class="photo-slot">
+            <img src="images/part1-farzoom.jpg" alt="Portrait taken from several feet back with zoom, matching the framing of the first photo" onerror="this.parentElement.classList.add('photo-slot--empty')">
+            <span class="photo-slot-caption">drop image in here</span>
+          </div>
+          <figcaption>Several feet back, zoomed in to match the framing.</figcaption>
+        </figure>
+      </div>
+
+      <p>[Write 2–4 sentences here about what actually changed between the two shots — nose-to-ear ratio, ear size, background compression — and why standing farther back and zooming in flattens a face more flatteringly than a close-up wide shot.]</p>
+    </div>
+  </section>
+
+  <!-- ===================== PART 2 ===================== -->
+  <section class="window" id="part2">
+    <div class="titlebar">
+      <span class="titlebar-box"></span>
+      <h2 class="titlebar-title">Part 2 — Architectural Perspective Compression</h2>
+    </div>
+    <div class="window-body">
+      <p class="folder-label">📁 far-zoomed-in.jpg &nbsp;vs.&nbsp; 📁 close-no-zoom.jpg</p>
+
+      <div class="photo-pair">
+        <figure class="photo-frame">
+          <div class="photo-slot">
+            <img src="images/part2-farzoom.jpg" alt="Building facade photographed from far away with the lens zoomed in" onerror="this.parentElement.classList.add('photo-slot--empty')">
+            <span class="photo-slot-caption">drop image in here</span>
+          </div>
+          <figcaption>Far away, zoomed in — the compressed look.</figcaption>
+        </figure>
+        <figure class="photo-frame">
+          <div class="photo-slot">
+            <img src="images/part2-closeup.jpg" alt="The same building facade photographed up close without zoom, matching the framing" onerror="this.parentElement.classList.add('photo-slot--empty')">
+            <span class="photo-slot-caption">drop image in here</span>
+          </div>
+          <figcaption>Walked in close, no zoom — matched framing.</figcaption>
+        </figure>
+      </div>
+
+      <p>[Write 2–4 sentences here about how the depth of the facade and the background behind it change between the two shots, and why a longer focal length from farther away compresses distant planes together while a wide lens up close exaggerates depth.]</p>
+    </div>
+  </section>
+
+  <!-- ===================== PART 3 ===================== -->
+  <section class="window" id="part3">
+    <div class="titlebar">
+      <span class="titlebar-box"></span>
+      <h2 class="titlebar-title">Part 3 — The Dolly Zoom</h2>
+    </div>
+    <div class="window-body">
+      <p class="folder-label">📁 dolly-zoom.gif</p>
+
+      <figure class="photo-frame photo-frame--wide">
+        <div class="photo-slot photo-slot--gif">
+          <img src="images/dolly-zoom.gif" alt="Animated GIF of a dolly zoom sequence, subject staying the same size while the background perspective warps" onerror="this.parentElement.classList.add('photo-slot--empty')">
+          <span class="photo-slot-caption">drop your assembled GIF here</span>
+        </div>
+        <figcaption>Camera dollying backward while zooming in — subject held constant, background warping around it.</figcaption>
+      </figure>
+
+      <p>[Describe your setup here: what the subject was, roughly how many stills you took, and what stayed fixed vs. what changed. Then say what makes the effect work — the subject stays the same size in frame while the field of view and background compression change underneath it.]</p>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="window footer-window">
+    <div class="titlebar titlebar--thin">
+      <span class="titlebar-box"></span>
+      <h2 class="titlebar-title">Get Info</h2>
+    </div>
+    <div class="window-body footer-body">
+      <p>CS 180 — Project 0: Becoming Friends with Your Camera</p>
+      <p class="footer-small">Made with a real camera, a bit of walking back and forth, and HTML.</p>
+    </div>
+  </footer>
+
+</main>
+
+<script>
+  function updateClock() {
+    var el = document.getElementById('clock');
+    if (!el) return;
+    var d = new Date();
+    var h = d.getHours();
+    var m = d.getMinutes();
+    var ampm = h >= 12 ? 'PM' : 'AM';
+    h = h % 12; if (h === 0) h = 12;
+    var mm = m < 10 ? '0' + m : m;
+    el.textContent = h + ':' + mm + ' ' + ampm;
+  }
+  updateClock();
+  setInterval(updateClock, 30000);
+</script>
+
+</body>
+</html>
