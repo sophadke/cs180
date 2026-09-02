@@ -207,6 +207,13 @@ a.menu-item--bold:hover { opacity: 0.7; }
   margin-bottom: 24px;
 }
 
+.photo-trio {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  margin: 24px 0;
+}
+
 .photo-frame {
   margin: 0;
 }
@@ -338,6 +345,9 @@ figcaption {
    ============================================================ */
 @media (max-width: 640px) {
   .photo-pair {
+    grid-template-columns: 1fr;
+  }
+  .photo-trio {
     grid-template-columns: 1fr;
   }
   .window-body {
