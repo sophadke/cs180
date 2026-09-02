@@ -374,3 +374,26 @@ figcaption {
   outline: 3px solid var(--r6);
   outline-offset: 2px;
 }
+
+/* ============================================================
+   Print (fixes Chrome dropping aspect-ratio boxes in PDF export)
+   ============================================================ */
+@media print {
+  .photo-slot {
+    aspect-ratio: auto;
+    height: 320px;
+  }
+  .photo-slot--gif {
+    aspect-ratio: auto;
+    height: 240px;
+  }
+  .window {
+    box-shadow: none;
+    break-inside: avoid;
+  }
+  .photo-frame,
+  .photo-pair,
+  .photo-trio {
+    break-inside: avoid;
+  }
+}
