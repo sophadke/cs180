@@ -1,0 +1,610 @@
+[
+  {
+    "file": "cathedral.jpg",
+    "mode": "single_scale",
+    "metric": "ncc",
+    "feature": "identity",
+    "G_offset": [
+      5,
+      2
+    ],
+    "R_offset": [
+      12,
+      3
+    ],
+    "seconds": 1.3,
+    "output": "outputs/cathedral_ncc.jpg"
+  },
+  {
+    "file": "cathedral.jpg",
+    "mode": "single_scale",
+    "metric": "l2",
+    "feature": "identity",
+    "G_offset": [
+      5,
+      2
+    ],
+    "R_offset": [
+      12,
+      3
+    ],
+    "seconds": 0.67,
+    "output": "outputs/cathedral_l2.jpg"
+  },
+  {
+    "file": "monastery.jpg",
+    "mode": "single_scale",
+    "metric": "ncc",
+    "feature": "identity",
+    "G_offset": [
+      -3,
+      2
+    ],
+    "R_offset": [
+      3,
+      2
+    ],
+    "seconds": 1.5,
+    "output": "outputs/monastery_ncc.jpg"
+  },
+  {
+    "file": "monastery.jpg",
+    "mode": "single_scale",
+    "metric": "l2",
+    "feature": "identity",
+    "G_offset": [
+      -3,
+      2
+    ],
+    "R_offset": [
+      3,
+      2
+    ],
+    "seconds": 0.78,
+    "output": "outputs/monastery_l2.jpg"
+  },
+  {
+    "file": "cathedral.jpg",
+    "mode": "pyramid",
+    "metric": "ncc",
+    "feature": "identity",
+    "G_offset": [
+      5,
+      2
+    ],
+    "R_offset": [
+      12,
+      3
+    ],
+    "seconds": 1.53,
+    "output": "outputs/cathedral_ncc.jpg"
+  },
+  {
+    "file": "cathedral.jpg",
+    "mode": "pyramid",
+    "metric": "l2",
+    "feature": "identity",
+    "G_offset": [
+      5,
+      2
+    ],
+    "R_offset": [
+      12,
+      3
+    ],
+    "seconds": 0.75,
+    "output": "outputs/cathedral_l2.jpg"
+  },
+  {
+    "file": "church.tif",
+    "mode": "pyramid",
+    "metric": "ncc",
+    "feature": "identity",
+    "G_offset": [
+      25,
+      4
+    ],
+    "R_offset": [
+      58,
+      -4
+    ],
+    "seconds": 19.95,
+    "output": "outputs/church_ncc.jpg"
+  },
+  {
+    "file": "church.tif",
+    "mode": "pyramid",
+    "metric": "l2",
+    "feature": "identity",
+    "G_offset": [
+      25,
+      4
+    ],
+    "R_offset": [
+      64,
+      267
+    ],
+    "seconds": 10.75,
+    "output": "outputs/church_l2.jpg"
+  },
+  {
+    "file": "emir.tif",
+    "mode": "pyramid",
+    "metric": "ncc",
+    "feature": "sobel",
+    "G_offset": [
+      49,
+      24
+    ],
+    "R_offset": [
+      107,
+      40
+    ],
+    "seconds": 67.24,
+    "output": "outputs/emir_ncc.jpg"
+  },
+  {
+    "file": "emir.tif",
+    "mode": "pyramid",
+    "metric": "l2",
+    "feature": "sobel",
+    "G_offset": [
+      49,
+      24
+    ],
+    "R_offset": [
+      107,
+      40
+    ],
+    "seconds": 65.48,
+    "output": "outputs/emir_l2.jpg"
+  },
+  {
+    "file": "harvesters.tif",
+    "mode": "pyramid",
+    "metric": "ncc",
+    "feature": "identity",
+    "G_offset": [
+      60,
+      17
+    ],
+    "R_offset": [
+      124,
+      13
+    ],
+    "seconds": 17.65,
+    "output": "outputs/harvesters_ncc.jpg"
+  },
+  {
+    "file": "harvesters.tif",
+    "mode": "pyramid",
+    "metric": "l2",
+    "feature": "identity",
+    "G_offset": [
+      59,
+      16
+    ],
+    "R_offset": [
+      124,
+      13
+    ],
+    "seconds": 9.97,
+    "output": "outputs/harvesters_l2.jpg"
+  },
+  {
+    "file": "icon.tif",
+    "mode": "pyramid",
+    "metric": "ncc",
+    "feature": "identity",
+    "G_offset": [
+      41,
+      17
+    ],
+    "R_offset": [
+      89,
+      23
+    ],
+    "seconds": 71.91,
+    "output": "outputs/icon_ncc.jpg"
+  },
+  {
+    "file": "icon.tif",
+    "mode": "pyramid",
+    "metric": "l2",
+    "feature": "identity",
+    "G_offset": [
+      41,
+      17
+    ],
+    "R_offset": [
+      90,
+      23
+    ],
+    "seconds": 10.09,
+    "output": "outputs/icon_l2.jpg"
+  },
+  {
+    "file": "ilemselga.tif",
+    "mode": "pyramid",
+    "metric": "ncc",
+    "feature": "identity",
+    "G_offset": [
+      40,
+      7
+    ],
+    "R_offset": [
+      130,
+      11
+    ],
+    "seconds": 108.05,
+    "output": "outputs/ilemselga_ncc.jpg"
+  },
+  {
+    "file": "ilemselga.tif",
+    "mode": "pyramid",
+    "metric": "l2",
+    "feature": "identity",
+    "G_offset": [
+      39,
+      7
+    ],
+    "R_offset": [
+      130,
+      11
+    ],
+    "seconds": 10.68,
+    "output": "outputs/ilemselga_l2.jpg"
+  },
+  {
+    "file": "master-pnp-prok-00000-00026a.tif.tiff",
+    "mode": "pyramid",
+    "metric": "ncc",
+    "feature": "identity",
+    "G_offset": [
+      55,
+      13
+    ],
+    "R_offset": [
+      126,
+      4
+    ],
+    "seconds": 17.81,
+    "output": "outputs/master-pnp-prok-00000-00026a.tif_ncc.jpg"
+  },
+  {
+    "file": "master-pnp-prok-00000-00026a.tif.tiff",
+    "mode": "pyramid",
+    "metric": "l2",
+    "feature": "identity",
+    "G_offset": [
+      55,
+      13
+    ],
+    "R_offset": [
+      126,
+      4
+    ],
+    "seconds": 10.07,
+    "output": "outputs/master-pnp-prok-00000-00026a.tif_l2.jpg"
+  },
+  {
+    "file": "master-pnp-prok-00400-00403a.tif.tiff",
+    "mode": "pyramid",
+    "metric": "ncc",
+    "feature": "identity",
+    "G_offset": [
+      67,
+      2
+    ],
+    "R_offset": [
+      133,
+      -7
+    ],
+    "seconds": 18.29,
+    "output": "outputs/master-pnp-prok-00400-00403a.tif_ncc.jpg"
+  },
+  {
+    "file": "master-pnp-prok-00400-00403a.tif.tiff",
+    "mode": "pyramid",
+    "metric": "l2",
+    "feature": "identity",
+    "G_offset": [
+      66,
+      1
+    ],
+    "R_offset": [
+      133,
+      -7
+    ],
+    "seconds": 10.82,
+    "output": "outputs/master-pnp-prok-00400-00403a.tif_l2.jpg"
+  },
+  {
+    "file": "master-pnp-prok-00400-00448a.tif.tiff",
+    "mode": "pyramid",
+    "metric": "ncc",
+    "feature": "identity",
+    "G_offset": [
+      62,
+      24
+    ],
+    "R_offset": [
+      123,
+      33
+    ],
+    "seconds": 20.14,
+    "output": "outputs/master-pnp-prok-00400-00448a.tif_ncc.jpg"
+  },
+  {
+    "file": "master-pnp-prok-00400-00448a.tif.tiff",
+    "mode": "pyramid",
+    "metric": "l2",
+    "feature": "identity",
+    "G_offset": [
+      63,
+      24
+    ],
+    "R_offset": [
+      291,
+      -282
+    ],
+    "seconds": 10.25,
+    "output": "outputs/master-pnp-prok-00400-00448a.tif_l2.jpg"
+  },
+  {
+    "file": "melons.tif",
+    "mode": "pyramid",
+    "metric": "ncc",
+    "feature": "identity",
+    "G_offset": [
+      82,
+      11
+    ],
+    "R_offset": [
+      178,
+      13
+    ],
+    "seconds": 18.29,
+    "output": "outputs/melons_ncc.jpg"
+  },
+  {
+    "file": "melons.tif",
+    "mode": "pyramid",
+    "metric": "l2",
+    "feature": "identity",
+    "G_offset": [
+      82,
+      11
+    ],
+    "R_offset": [
+      178,
+      13
+    ],
+    "seconds": 10.98,
+    "output": "outputs/melons_l2.jpg"
+  },
+  {
+    "file": "monastery.jpg",
+    "mode": "pyramid",
+    "metric": "ncc",
+    "feature": "identity",
+    "G_offset": [
+      -3,
+      2
+    ],
+    "R_offset": [
+      3,
+      2
+    ],
+    "seconds": 1.54,
+    "output": "outputs/monastery_ncc.jpg"
+  },
+  {
+    "file": "monastery.jpg",
+    "mode": "pyramid",
+    "metric": "l2",
+    "feature": "identity",
+    "G_offset": [
+      -3,
+      2
+    ],
+    "R_offset": [
+      3,
+      2
+    ],
+    "seconds": 0.73,
+    "output": "outputs/monastery_l2.jpg"
+  },
+  {
+    "file": "religous_painting.tif",
+    "mode": "pyramid",
+    "metric": "ncc",
+    "feature": "identity",
+    "G_offset": [
+      28,
+      3
+    ],
+    "R_offset": [
+      68,
+      7
+    ],
+    "seconds": 20.96,
+    "output": "outputs/religous_painting_ncc.jpg"
+  },
+  {
+    "file": "religous_painting.tif",
+    "mode": "pyramid",
+    "metric": "l2",
+    "feature": "identity",
+    "G_offset": [
+      28,
+      3
+    ],
+    "R_offset": [
+      68,
+      7
+    ],
+    "seconds": 10.99,
+    "output": "outputs/religous_painting_l2.jpg"
+  },
+  {
+    "file": "self_portrait.tif",
+    "mode": "pyramid",
+    "metric": "ncc",
+    "feature": "identity",
+    "G_offset": [
+      79,
+      29
+    ],
+    "R_offset": [
+      176,
+      37
+    ],
+    "seconds": 18.72,
+    "output": "outputs/self_portrait_ncc.jpg"
+  },
+  {
+    "file": "self_portrait.tif",
+    "mode": "pyramid",
+    "metric": "l2",
+    "feature": "identity",
+    "G_offset": [
+      79,
+      29
+    ],
+    "R_offset": [
+      176,
+      37
+    ],
+    "seconds": 10.51,
+    "output": "outputs/self_portrait_l2.jpg"
+  },
+  {
+    "file": "siren.tif",
+    "mode": "pyramid",
+    "metric": "ncc",
+    "feature": "identity",
+    "G_offset": [
+      49,
+      -6
+    ],
+    "R_offset": [
+      96,
+      -25
+    ],
+    "seconds": 18.48,
+    "output": "outputs/siren_ncc.jpg"
+  },
+  {
+    "file": "siren.tif",
+    "mode": "pyramid",
+    "metric": "l2",
+    "feature": "identity",
+    "G_offset": [
+      49,
+      -6
+    ],
+    "R_offset": [
+      96,
+      -25
+    ],
+    "seconds": 144.02,
+    "output": "outputs/siren_l2.jpg"
+  },
+  {
+    "file": "three_generations.tif",
+    "mode": "pyramid",
+    "metric": "ncc",
+    "feature": "identity",
+    "G_offset": [
+      53,
+      14
+    ],
+    "R_offset": [
+      112,
+      11
+    ],
+    "seconds": 17.97,
+    "output": "outputs/three_generations_ncc.jpg"
+  },
+  {
+    "file": "three_generations.tif",
+    "mode": "pyramid",
+    "metric": "l2",
+    "feature": "identity",
+    "G_offset": [
+      53,
+      14
+    ],
+    "R_offset": [
+      112,
+      11
+    ],
+    "seconds": 10.11,
+    "output": "outputs/three_generations_l2.jpg"
+  },
+  {
+    "file": "tobolsk.jpg",
+    "mode": "pyramid",
+    "metric": "ncc",
+    "feature": "identity",
+    "G_offset": [
+      3,
+      3
+    ],
+    "R_offset": [
+      6,
+      3
+    ],
+    "seconds": 1.48,
+    "output": "outputs/tobolsk_ncc.jpg"
+  },
+  {
+    "file": "tobolsk.jpg",
+    "mode": "pyramid",
+    "metric": "l2",
+    "feature": "identity",
+    "G_offset": [
+      3,
+      3
+    ],
+    "R_offset": [
+      6,
+      3
+    ],
+    "seconds": 0.77,
+    "output": "outputs/tobolsk_l2.jpg"
+  },
+  {
+    "file": "wharf.tif",
+    "mode": "pyramid",
+    "metric": "ncc",
+    "feature": "identity",
+    "G_offset": [
+      15,
+      -7
+    ],
+    "R_offset": [
+      83,
+      -16
+    ],
+    "seconds": 32.22,
+    "output": "outputs/wharf_ncc.jpg"
+  },
+  {
+    "file": "wharf.tif",
+    "mode": "pyramid",
+    "metric": "l2",
+    "feature": "identity",
+    "G_offset": [
+      15,
+      -7
+    ],
+    "R_offset": [
+      83,
+      -16
+    ],
+    "seconds": 14.6,
+    "output": "outputs/wharf_l2.jpg"
+  }
+]

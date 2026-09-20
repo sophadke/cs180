@@ -1,0 +1,62 @@
+[
+  {
+    "feature": "identity",
+    "metric": "ncc",
+    "G_offset": [
+      49,
+      24
+    ],
+    "R_offset": [
+      141,
+      -205
+    ],
+    "G_score": -0.7074,
+    "R_score": -0.2835,
+    "output": "outputs/exploration/emir_identity_ncc.jpg"
+  },
+  {
+    "feature": "percentile",
+    "metric": "ncc",
+    "G_offset": [
+      49,
+      24
+    ],
+    "R_offset": [
+      141,
+      -205
+    ],
+    "G_score": -0.7045,
+    "R_score": -0.2823,
+    "output": "outputs/exploration/emir_percentile_ncc.jpg"
+  },
+  {
+    "feature": "histeq",
+    "metric": "ncc",
+    "G_offset": [
+      49,
+      24
+    ],
+    "R_offset": [
+      153,
+      -220
+    ],
+    "G_score": -0.674,
+    "R_score": -0.3295,
+    "output": "outputs/exploration/emir_histeq_ncc.jpg"
+  },
+  {
+    "feature": "sobel",
+    "metric": "ncc",
+    "G_offset": [
+      49,
+      24
+    ],
+    "R_offset": [
+      107,
+      40
+    ],
+    "G_score": -0.4775,
+    "R_score": -0.5133,
+    "output": "outputs/exploration/emir_sobel_ncc.jpg"
+  }
+]

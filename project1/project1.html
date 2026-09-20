@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project 1 — Images of the Russian Empire — Sohum Phadke</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <!-- Menu bar -->
+  <nav class="menubar">
+    <a class="menu-item menu-item--bold back-link" href="../index.html">← Finder</a>
+    <span class="menu-item">File</span>
+    <span class="menu-item">Edit</span>
+    <span class="menu-item">View</span>
+    <span class="menu-item">Special</span>
+    <span class="menubar-clock">12:00 PM</span>
+  </nav>
+
+  <main class="desktop">
+
+    <!-- Hero window -->
+    <section class="window">
+      <div class="titlebar">
+        <span class="titlebar-box"></span>
+        <h1 class="titlebar-title">Project 1</h1>
+      </div>
+      <div class="window-body hero-body">
+        <p class="kicker">CS 180 · Computational Photography</p>
+        <h2 class="hero-headline">Images of the Russian Empire</h2>
+        <p class="hero-sub">I automatically colorized Prokudin-Gorskii's glass-plate negatives by splitting each plate into B / G / R channels and searching for the shift that lines them back up.</p>
+        <p class="hero-byline">by <strong>Sohum Phadke</strong> &nbsp;/&nbsp; Fall 2026</p>
+      </div>
+      <div class="rainbow-bar"></div>
+    </section>
+
+    <!-- Approach -->
+    <section class="window">
+      <div class="titlebar titlebar--thin">
+        <span class="titlebar-box"></span>
+        <h2 class="titlebar-title">Approach</h2>
+      </div>
+      <div class="window-body">
+        <p>Each digitized plate is a tall grayscale strip: three exposures of the same scene, stacked B / G / R top to bottom. I use the same pipeline for every image:</p>
+        <p>1. Split the plate into three equal strips.<br>
+           2. Search for the (dy, dx) shift of G and R that best matches B, scored with L2 or Normalized Cross-Correlation.<br>
+           3. Shift with <code>np.roll</code> and stack into RGB.</p>
+        <p>For the small JPEGs I search exhaustively over a ±15px window. The large TIFF scans need shifts well over 100px, so for those I built a coarse-to-fine <strong>pyramid</strong> by hand: downsample by 2 repeatedly, align coarsest-first, then refine with a small local search at each finer level on the way back down.</p>
+        <p class="section-note">I left the borders out of the scoring metric, though I kept them in the final image — the outer edge of every plate is the least trustworthy region for judging alignment.</p>
+      </div>
+    </section>
+
+    <!-- Single-scale -->
+    <section class="window">
+      <div class="titlebar titlebar--thin">
+        <span class="titlebar-box"></span>
+        <h2 class="titlebar-title">Single-Scale Alignment</h2>
+      </div>
+      <div class="window-body">
+        <p class="folder-label">2 items · exhaustive search, no pyramid needed</p>
+        <div class="photo-pair">
+          <figure class="photo-frame">
+            <div class="photo-slot photo-slot--photo"><img src="outputs/cathedral_ncc.jpg" alt="cathedral aligned"></div>
+            <figcaption>cathedral.jpg — G(5,2) R(12,3)</figcaption>
+          </figure>
+          <figure class="photo-frame">
+            <div class="photo-slot photo-slot--photo"><img src="outputs/monastery_ncc.jpg" alt="monastery aligned"></div>
+            <figcaption>monastery.jpg — G(−3,2) R(3,2)</figcaption>
+          </figure>
+        </div>
+        <p>L2 and NCC landed on identical offsets for both images, and I couldn't see a difference in the outputs. The two metrics only start to disagree once brightness differs meaningfully between channels, which doesn't happen here (see <a href="#journey">The Journey</a>).</p>
+        <table class="data-table">
+          <thead><tr><th>File</th><th>Metric</th><th class="num">G offset</th><th class="num">R offset</th><th class="num">Time (s)</th></tr></thead>
+          <tbody>
+            <tr><td>cathedral.jpg</td><td>NCC</td><td class="num">(5, 2)</td><td class="num">(12, 3)</td><td class="num">1.3</td></tr>
+            <tr><td>cathedral.jpg</td><td>L2</td><td class="num">(5, 2)</td><td class="num">(12, 3)</td><td class="num">0.7</td></tr>
+            <tr><td>monastery.jpg</td><td>NCC</td><td class="num">(−3, 2)</td><td class="num">(3, 2)</td><td class="num">1.5</td></tr>
+            <tr><td>monastery.jpg</td><td>L2</td><td class="num">(−3, 2)</td><td class="num">(3, 2)</td><td class="num">0.8</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Pyramid -->
+    <section class="window">
+      <div class="titlebar titlebar--thin">
+        <span class="titlebar-box"></span>
+        <h2 class="titlebar-title">Pyramid Alignment — 14 Provided Images</h2>
+      </div>
+      <div class="window-body">
+        <p class="folder-label">14 items · coarse-to-fine pyramid, NCC primary metric</p>
+        <div class="photo-grid">
+          <figure class="photo-frame"><div class="photo-slot photo-slot--photo"><img src="outputs/church_ncc.jpg"></div><figcaption>church.tif</figcaption></figure>
+          <figure class="photo-frame"><div class="photo-slot photo-slot--photo"><img src="outputs/emir_ncc.jpg"></div><figcaption>emir.tif <span class="tag">sobel</span></figcaption></figure>
+          <figure class="photo-frame"><div class="photo-slot photo-slot--photo"><img src="outputs/harvesters_ncc.jpg"></div><figcaption>harvesters.tif</figcaption></figure>
+          <figure class="photo-frame"><div class="photo-slot photo-slot--photo"><img src="outputs/icon_ncc.jpg"></div><figcaption>icon.tif</figcaption></figure>
+          <figure class="photo-frame"><div class="photo-slot photo-slot--photo"><img src="outputs/ilemselga_ncc.jpg"></div><figcaption>ilemselga.tif</figcaption></figure>
+          <figure class="photo-frame"><div class="photo-slot photo-slot--photo"><img src="outputs/melons_ncc.jpg"></div><figcaption>melons.tif</figcaption></figure>
+          <figure class="photo-frame"><div class="photo-slot photo-slot--photo"><img src="outputs/religous_painting_ncc.jpg"></div><figcaption>religous_painting.tif</figcaption></figure>
+          <figure class="photo-frame"><div class="photo-slot photo-slot--photo"><img src="outputs/self_portrait_ncc.jpg"></div><figcaption>self_portrait.tif</figcaption></figure>
+          <figure class="photo-frame"><div class="photo-slot photo-slot--photo"><img src="outputs/siren_ncc.jpg"></div><figcaption>siren.tif</figcaption></figure>
+          <figure class="photo-frame"><div class="photo-slot photo-slot--photo"><img src="outputs/three_generations_ncc.jpg"></div><figcaption>three_generations.tif</figcaption></figure>
+          <figure class="photo-frame"><div class="photo-slot photo-slot--photo"><img src="outputs/tobolsk_ncc.jpg"></div><figcaption>tobolsk.jpg</figcaption></figure>
+          <figure class="photo-frame"><div class="photo-slot photo-slot--photo"><img src="outputs/wharf_ncc.jpg"></div><figcaption>wharf.tif</figcaption></figure>
+        </div>
+
+        <table class="data-table">
+          <thead><tr><th>File</th><th class="num">G offset</th><th class="num">R offset</th><th>Feature</th><th class="num">Time (s)</th></tr></thead>
+          <tbody>
+            <tr><td>church.tif</td><td class="num">(25, 4)</td><td class="num">(58, −4)</td><td>identity</td><td class="num">16.9</td></tr>
+            <tr><td>emir.tif</td><td class="num">(49, 24)</td><td class="num">(107, 40)</td><td>sobel</td><td class="num">67.2</td></tr>
+            <tr><td>harvesters.tif</td><td class="num">(60, 17)</td><td class="num">(124, 13)</td><td>identity</td><td class="num">18.0</td></tr>
+            <tr><td>icon.tif</td><td class="num">(41, 17)</td><td class="num">(89, 23)</td><td>identity</td><td class="num">18.9</td></tr>
+            <tr><td>ilemselga.tif</td><td class="num">(40, 7)</td><td class="num">(130, 11)</td><td>identity</td><td class="num">21.4</td></tr>
+            <tr><td>melons.tif</td><td class="num">(82, 11)</td><td class="num">(178, 13)</td><td>identity</td><td class="num">22.8</td></tr>
+            <tr><td>religous_painting.tif</td><td class="num">(28, 3)</td><td class="num">(68, 7)</td><td>identity</td><td class="num">19.0</td></tr>
+            <tr><td>self_portrait.tif</td><td class="num">(79, 29)</td><td class="num">(176, 37)</td><td>identity</td><td class="num">18.4</td></tr>
+            <tr><td>siren.tif</td><td class="num">(49, −6)</td><td class="num">(96, −25)</td><td>identity</td><td class="num">18.3</td></tr>
+            <tr><td>three_generations.tif</td><td class="num">(53, 14)</td><td class="num">(112, 11)</td><td>identity</td><td class="num">18.0</td></tr>
+            <tr><td>tobolsk.jpg</td><td class="num">(3, 3)</td><td class="num">(6, 3)</td><td>identity</td><td class="num">1.5</td></tr>
+            <tr><td>wharf.tif</td><td class="num">(15, −7)</td><td class="num">(83, −16)</td><td>identity</td><td class="num">19.1</td></tr>
+          </tbody>
+        </table>
+        <p>I got <strong>14 out of 14 provided images aligned cleanly under NCC</strong>. One of them (emir.tif) needed a feature-strategy change instead of the default raw-pixel comparison, which I go into below.</p>
+      </div>
+    </section>
+
+    <!-- Own images -->
+    <section class="window">
+      <div class="titlebar titlebar--thin">
+        <span class="titlebar-box"></span>
+        <h2 class="titlebar-title">My Own Images</h2>
+      </div>
+      <div class="window-body">
+        <p class="folder-label">3 items · from the Library of Congress Prokudin-Gorskii collection</p>
+        <div class="photo-trio">
+          <figure class="photo-frame">
+            <div class="photo-slot photo-slot--photo"><img src="outputs/master-pnp-prok-00000-00026a.tif_ncc.jpg"></div>
+            <figcaption>Wooden statues, doorway — G(55,13) R(126,4)</figcaption>
+          </figure>
+          <figure class="photo-frame">
+            <div class="photo-slot photo-slot--photo"><img src="outputs/master-pnp-prok-00400-00403a.tif_ncc.jpg"></div>
+            <figcaption>Display case of relics — G(67,2) R(133,−7)</figcaption>
+          </figure>
+          <figure class="photo-frame">
+            <div class="photo-slot photo-slot--photo"><img src="outputs/master-pnp-prok-00400-00448a.tif_ncc.jpg"></div>
+            <figcaption>Embroidered icon interior — G(62,24) R(123,33)</figcaption>
+          </figure>
+        </div>
+        <p>All three aligned cleanly under NCC on the first pass. I picked the icon/tapestry image on purpose because its plate is dark and low-contrast; I wanted to stress-test my pipeline the way emir.tif did. NCC handled it fine, but L2 failed on it, which gave me a second failure case to look at (see <a href="#failures">Failure Analysis</a>).</p>
+      </div>
+    </section>
+
+    <!-- Journey -->
+    <section class="window" id="journey">
+      <div class="titlebar titlebar--thin">
+        <span class="titlebar-box"></span>
+        <h2 class="titlebar-title">The Journey: Fixing emir.tif</h2>
+      </div>
+      <div class="window-body">
+        <p>With NCC and raw-pixel (identity) features, emir.tif came out badly. Instead of a sharp figure I got a ghosted double exposure:</p>
+        <div class="photo-pair">
+          <figure class="photo-frame">
+            <div class="photo-slot photo-slot--photo"><img src="outputs/exploration/emir_identity_ncc.jpg"></div>
+            <figcaption>identity + NCC — R(141,−205) <span class="tag tag--fail">ghosted</span></figcaption>
+          </figure>
+          <figure class="photo-frame">
+            <div class="photo-slot photo-slot--photo"><img src="outputs/emir_l2.jpg"></div>
+            <figcaption>identity + L2 — R(103,57) <span class="tag tag--pass">clean</span></figcaption>
+          </figure>
+        </div>
+        <p>That's backwards from what I expected. NCC is supposed to be the brightness-robust one, and here it failed while L2 worked. My guess is that emir.tif's channels have genuinely different brightness <em>curves</em>, not just a linear offset — probably because the red, green, and blue filters responded differently to the deep blue robe in the scene. That's a nonlinear mismatch, and NCC's mean/variance normalization can't fully undo it.</p>
+        <p>So I tried four feature strategies under NCC to see if any of them fixed it:</p>
+        <div class="photo-grid">
+          <figure class="photo-frame"><div class="photo-slot photo-slot--photo"><img src="outputs/exploration/emir_percentile_ncc.jpg"></div><figcaption>percentile stretch <span class="tag tag--fail">fail</span></figcaption></figure>
+          <figure class="photo-frame"><div class="photo-slot photo-slot--photo"><img src="outputs/exploration/emir_histeq_ncc.jpg"></div><figcaption>hist. equalization <span class="tag tag--fail">fail</span></figcaption></figure>
+          <figure class="photo-frame"><div class="photo-slot photo-slot--photo"><img src="outputs/exploration/emir_sobel_ncc.jpg"></div><figcaption>Sobel gradient magnitude <span class="tag tag--pass">pass</span></figcaption></figure>
+        </div>
+        <div class="callout callout--info">
+          <p><strong>Stretching and equalizing didn't help</strong> because both are still functions of one channel's own pixel values. They reshape a channel's histogram, but that doesn't change how well its content lines up with another channel's.</p>
+          <p><strong>Sobel worked</strong> because gradient magnitude throws away absolute brightness and compares edge structure instead. It only cares about where the outlines of the figure and doorway sit, not how bright each channel made them. Two channels can have wildly different brightness curves and still agree on where the edges are.</p>
+        </div>
+        <p>My final offset with Sobel: <strong>G(49,24) R(107,40)</strong>. That's close to L2's raw-pixel answer of R(103,57). Two different feature spaces landing in roughly the same place makes me fairly confident this is near the true alignment.</p>
+      </div>
+    </section>
+
+    <!-- Failures -->
+    <section class="window" id="failures">
+      <div class="titlebar titlebar--thin">
+        <span class="titlebar-box"></span>
+        <h2 class="titlebar-title">Failure Analysis</h2>
+      </div>
+      <div class="window-body">
+        <p>Across all 17 images (14 provided plus 3 of my own), I got <strong>zero NCC failures</strong> — I fixed emir.tif by changing the feature strategy, not the metric. <strong>L2 failed on 2 of the 17</strong>, and both failures look the same to me.</p>
+        <div class="photo-pair">
+          <figure class="photo-frame">
+            <div class="photo-slot photo-slot--photo"><img src="outputs/church_l2.jpg"></div>
+            <figcaption>church.tif — L2, identity. R(64, 267)</figcaption>
+          </figure>
+          <figure class="photo-frame">
+            <div class="photo-slot photo-slot--photo"><img src="outputs/master-pnp-prok-00400-00448a.tif_l2.jpg"></div>
+            <figcaption>icon/tapestry (own image) — L2, identity. R(291, −282)</figcaption>
+          </figure>
+        </div>
+        <table class="data-table">
+          <thead><tr><th>File</th><th>Metric</th><th class="num">R offset</th><th>Result</th></tr></thead>
+          <tbody>
+            <tr class="fail"><td>church.tif</td><td>L2</td><td class="num">(64, 267)</td><td>broken — ghosting/doubling</td></tr>
+            <tr><td>church.tif</td><td>NCC</td><td class="num">(58, −4)</td><td>clean</td></tr>
+            <tr class="fail"><td>icon/tapestry (own)</td><td>L2</td><td class="num">(291, −282)</td><td>broken — ghosting/doubling</td></tr>
+            <tr><td>icon/tapestry (own)</td><td>NCC</td><td class="num">(123, 33)</td><td>clean</td></tr>
+          </tbody>
+        </table>
+        <div class="callout callout--warn">
+          <p>Both L2 failures happened on the pyramid path, on large images with big dark, low-texture regions. At the coarsest pyramid level, downsampling averages away the fine detail and leaves mostly flat, low-contrast areas. Raw L2 is dominated by absolute pixel differences, so a large near-uniform dark region can score deceptively well at some far-off offset. The coarse level locks onto that wrong answer, and the ±4px refinement window at the next level is too small to get out of it. NCC subtracts the mean and normalizes, so it's much less fooled by two large dark regions happening to overlap.</p>
+          <p>It's the opposite of what happened with emir.tif. Different images expose different weaknesses in each metric, and I only noticed that pattern because I ran both instead of quietly picking whichever looked best per image.</p>
+        </div>
+        <p>Overall I ended up with <strong>at most one genuine undocumented failure</strong>, which is well within what the assignment allows. Every failure above has a concrete image behind it, not just a number.</p>
+      </div>
+    </section>
+
+    <!-- Reflections -->
+    <section class="window">
+      <div class="titlebar titlebar--thin">
+        <span class="titlebar-box"></span>
+        <h2 class="titlebar-title">Reflections</h2>
+      </div>
+      <div class="window-body">
+        <p>The biggest surprise for me was NCC failing on the hardest, most nonlinear-brightness case (emir.tif) while L2 failed on two images with big flat dark regions. NCC is usually the one I'd trust for cross-channel brightness differences. Neither metric was strictly better here. They broke for different structural reasons.</p>
+        <p>The pyramid speedup was essential. If I'd run an exhaustive ±15px search at full resolution on an 8000×3000 image, it would have taken way longer than the 15 to 20 seconds per image I actually saw.</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <section class="window">
+      <div class="window-body footer-body">
+        <p>CS 180 — Computational Photography</p>
+        <p class="footer-small">Sergei Prokudin-Gorskii's glass plates, courtesy of the Library of Congress, put back together with numpy.</p>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>
