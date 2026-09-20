@@ -60,7 +60,7 @@
         <h2 class="titlebar-title">Single-Scale Alignment</h2>
       </div>
       <div class="window-body">
-        <p class="folder-label">2 items · exhaustive search, no pyramid needed</p>
+        <p class="folder-label">3 items · exhaustive search, no pyramid needed</p>
         <div class="photo-pair">
           <figure class="photo-frame">
             <div class="photo-slot photo-slot--photo"><img src="outputs/cathedral_ncc.jpg" alt="cathedral aligned"></div>
@@ -70,8 +70,12 @@
             <div class="photo-slot photo-slot--photo"><img src="outputs/monastery_ncc.jpg" alt="monastery aligned"></div>
             <figcaption>monastery.jpg — G(−3,2) R(3,2)</figcaption>
           </figure>
+          <figure class="photo-frame">
+            <div class="photo-slot photo-slot--photo"><img src="outputs/tobolsk_ncc.jpg" alt="tobolsk aligned"></div>
+            <figcaption>tobolsk.jpg — G(3,3) R(6,3)</figcaption>
+          </figure>
         </div>
-        <p>L2 and NCC landed on identical offsets for both images, and I couldn't see a difference in the outputs. The two metrics only start to disagree once brightness differs meaningfully between channels, which doesn't happen here (see <a href="#journey">The Journey</a>).</p>
+        <p>L2 and NCC landed on identical offsets for all three images, and I couldn't see a difference in the outputs. The two metrics only start to disagree once brightness differs meaningfully between channels, which doesn't happen here (see <a href="#journey">The Journey</a>).</p>
         <table class="data-table">
           <thead><tr><th>File</th><th>Metric</th><th class="num">G offset</th><th class="num">R offset</th><th class="num">Time (s)</th></tr></thead>
           <tbody>
@@ -79,6 +83,8 @@
             <tr><td>cathedral.jpg</td><td>L2</td><td class="num">(5, 2)</td><td class="num">(12, 3)</td><td class="num">0.7</td></tr>
             <tr><td>monastery.jpg</td><td>NCC</td><td class="num">(−3, 2)</td><td class="num">(3, 2)</td><td class="num">1.5</td></tr>
             <tr><td>monastery.jpg</td><td>L2</td><td class="num">(−3, 2)</td><td class="num">(3, 2)</td><td class="num">0.8</td></tr>
+            <tr><td>tobolsk.jpg</td><td>NCC</td><td class="num">(3, 3)</td><td class="num">(6, 3)</td><td class="num">1.1</td></tr>
+            <tr><td>tobolsk.jpg</td><td>L2</td><td class="num">(3, 3)</td><td class="num">(6, 3)</td><td class="num">0.75</td></tr>
           </tbody>
         </table>
       </div>

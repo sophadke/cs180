@@ -64,6 +64,38 @@
     "output": "outputs/monastery_l2.jpg"
   },
   {
+    "file": "tobolsk.jpg",
+    "mode": "single_scale",
+    "metric": "ncc",
+    "feature": "identity",
+    "G_offset": [
+      3,
+      3
+    ],
+    "R_offset": [
+      6,
+      3
+    ],
+    "seconds": 1.1,
+    "output": "outputs/tobolsk_ncc.jpg"
+  },
+  {
+    "file": "tobolsk.jpg",
+    "mode": "single_scale",
+    "metric": "l2",
+    "feature": "identity",
+    "G_offset": [
+      3,
+      3
+    ],
+    "R_offset": [
+      6,
+      3
+    ],
+    "seconds": 0.75,
+    "output": "outputs/tobolsk_l2.jpg"
+  },
+  {
     "file": "cathedral.jpg",
     "mode": "pyramid",
     "metric": "ncc",

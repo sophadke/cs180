@@ -23,7 +23,7 @@ DEFAULTS = dict(
     refine_window=4,
 )
 
-SMALL_JPGS = {"cathedral.jpg", "monastery.jpg"}
+SMALL_JPGS = {"cathedral.jpg", "monastery.jpg", "tobolsk.jpg"}
 
 
 def load_image(path):

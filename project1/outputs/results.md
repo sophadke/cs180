@@ -4,6 +4,8 @@
 | cathedral.jpg | single_scale | l2 | identity | (5, 2) | (12, 3) | 0.67 |
 | monastery.jpg | single_scale | ncc | identity | (-3, 2) | (3, 2) | 1.5 |
 | monastery.jpg | single_scale | l2 | identity | (-3, 2) | (3, 2) | 0.78 |
+| tobolsk.jpg | single_scale | ncc | identity | (3, 3) | (6, 3) | 1.1 |
+| tobolsk.jpg | single_scale | l2 | identity | (3, 3) | (6, 3) | 0.75 |
 | cathedral.jpg | pyramid | ncc | identity | (5, 2) | (12, 3) | 1.53 |
 | cathedral.jpg | pyramid | l2 | identity | (5, 2) | (12, 3) | 0.75 |
 | church.tif | pyramid | ncc | identity | (25, 4) | (58, -4) | 19.95 |
