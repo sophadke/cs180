@@ -1,0 +1,64 @@
+:root {
+  --bg: #fbfaf7;
+  --text: #1e1f22;
+  --muted: #62656d;
+  --accent: #2f5d8a;
+  --rule: #e2e0da;
+  --code-bg: #f1efe9;
+  --todo: #b3261e;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #17181b;
+    --text: #e6e4df;
+    --muted: #9da0a8;
+    --accent: #8db6e0;
+    --rule: #2e3036;
+    --code-bg: #212328;
+    --todo: #f2b8b5;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 17px/1.6 Georgia, "Iowan Old Style", serif;
+}
+header, main, footer { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+header { padding-top: 48px; padding-bottom: 20px; border-bottom: 1px solid var(--rule); }
+.course { margin: 0; color: var(--muted); font: 600 13px/1 system-ui, sans-serif; letter-spacing: .08em; text-transform: uppercase; }
+h1 { margin: 8px 0 4px; font-size: 40px; line-height: 1.15; }
+.byline { margin: 0 0 16px; color: var(--muted); }
+nav { display: flex; flex-wrap: wrap; gap: 6px 16px; font: 14px system-ui, sans-serif; }
+nav a { color: var(--accent); text-decoration: none; }
+nav a:hover { text-decoration: underline; }
+h2.part { margin: 56px 0 0; font-size: 28px; }
+h3 { margin: 40px 0 8px; font-size: 22px; }
+h4 { margin: 28px 0 6px; font: 600 15px system-ui, sans-serif; color: var(--muted); }
+section { border-bottom: 1px solid var(--rule); padding-bottom: 24px; }
+p { max-width: 72ch; }
+code { font: 14px ui-monospace, Menlo, monospace; background: var(--code-bg); padding: 1px 4px; border-radius: 3px; }
+pre { background: var(--code-bg); padding: 14px 16px; border-radius: 6px; overflow-x: auto; }
+pre code { padding: 0; background: none; font-size: 13.5px; line-height: 1.5; }
+.eq { text-align: center; font-style: italic; max-width: none; }
+.note { color: var(--muted); font-size: 14px; }
+.todo { color: var(--todo); }
+table { border-collapse: collapse; font: 14px system-ui, sans-serif; margin: 8px 0; }
+th, td { border-bottom: 1px solid var(--rule); padding: 6px 14px; text-align: left; }
+.grid { display: grid; gap: 12px; margin: 14px 0; align-items: start; }
+.g2 { grid-template-columns: repeat(2, 1fr); }
+.g3 { grid-template-columns: repeat(3, 1fr); }
+.g4 { grid-template-columns: repeat(4, 1fr); }
+figure { margin: 0; }
+figure img { width: 100%; height: auto; display: block; border-radius: 3px; background: var(--code-bg); }
+figcaption { font: 13px/1.4 system-ui, sans-serif; color: var(--muted); margin-top: 5px; }
+figure.wide { margin: 14px 0; }
+figure.mid { max-width: 640px; margin: 14px auto; }
+.small figure img, figure.small img { max-width: 160px; image-rendering: pixelated; }
+figure.tiny img { width: 25%; }
+footer { color: var(--muted); font-size: 13px; padding: 32px 20px 48px; }
+@media (max-width: 700px) {
+  .g3, .g4 { grid-template-columns: repeat(2, 1fr); }
+  h1 { font-size: 30px; }
+}

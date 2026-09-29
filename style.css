@@ -483,3 +483,70 @@ figcaption {
   .photo-grid { grid-template-columns: 1fr; }
   .data-table { font-size: 12px; }
 }
+
+/* ============================================================
+   Project 2 additions (uncropped figures, code, equations)
+   ============================================================ */
+.p2 p { max-width: 78ch; }
+.p2 a { color: var(--r6); }
+.p2 code {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  background: var(--paper);
+  border: 1px solid #d8d6cf;
+  padding: 0 4px;
+}
+.p2 pre {
+  background: var(--paper);
+  border: 2px solid var(--line);
+  padding: 14px 16px;
+  overflow-x: auto;
+  margin: 6px 0 18px;
+}
+.p2 pre code { border: 0; padding: 0; background: none; font-size: 12.5px; line-height: 1.5; }
+.p2 .cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.p2 .label { font-family: var(--font-pixel); font-size: 11px; opacity: 0.7; margin: 10px 0 0; }
+.p2 .eq {
+  text-align: center;
+  max-width: none;
+  font-size: 15px;
+  margin: 18px 0;
+  padding: 10px;
+  border: 2px dashed var(--line);
+  background: var(--paper);
+}
+.p2 .folder-label { margin: 30px 0 12px; opacity: 0.8; }
+
+.fig-row { display: grid; gap: 16px; margin: 18px 0 24px; align-items: start; }
+.fig-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.fig-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.fig-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.p2 figure { margin: 0; }
+.p2 figure img {
+  width: 100%;
+  height: auto;
+  border: 2px solid var(--line);
+  background: #e8e6df;
+}
+.fig-filters figure img { max-width: 140px; margin: 0 auto; image-rendering: pixelated; }
+.p2 figure.key img { max-width: 170px; margin: 0 auto; }
+.p2 figure.wide { margin: 16px 0; }
+.p2 figure.mid { max-width: 620px; margin: 18px auto; }
+.p2 .hybrid-row { max-width: 760px; display: grid; grid-template-columns: 2fr 1fr; gap: 16px; align-items: end; margin: 18px 0; }
+.p2 .hybrid-row .shrink img { width: 30%; margin: 0 auto; }
+
+.part-divider .window-body { padding: 14px 30px; }
+.part-divider .kicker { margin: 0; font-size: 14px; opacity: 1; }
+
+.p2-toc { list-style: none; margin: 0; padding: 0; columns: 2; column-gap: 40px; }
+.p2-toc li { padding: 4px 0; break-inside: avoid; }
+.p2-toc a { color: var(--ink); text-decoration: none; border-bottom: 2px solid transparent; }
+.p2-toc a:hover { border-bottom-color: var(--line); }
+
+@media (max-width: 900px) {
+  .fig-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .fig-3, .fig-2, .p2 .cols, .p2 .hybrid-row { grid-template-columns: 1fr; }
+  .p2-toc { columns: 1; }
+}

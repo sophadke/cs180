@@ -1,0 +1,24 @@
+{
+  "box": {
+    "four_loops": 0.5339236259460449,
+    "two_loops": 0.07660698890686035,
+    "scipy": 0.003298044204711914,
+    "matches_scipy": true
+  },
+  "Dx": {
+    "four_loops": 0.023955821990966797,
+    "two_loops": 0.07569503784179688,
+    "scipy": 0.0002219676971435547,
+    "matches_scipy": true
+  },
+  "Dy": {
+    "four_loops": 0.02672410011291504,
+    "two_loops": 0.07595586776733398,
+    "scipy": 0.00034499168395996094,
+    "matches_scipy": true
+  },
+  "image_size": [
+    200,
+    268
+  ]
+}
