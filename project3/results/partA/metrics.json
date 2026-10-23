@@ -1,0 +1,81 @@
+{
+  "group": "all",
+  "seed": 180,
+  "step_size": 0.02,
+  "cfg_w": 7,
+  "model": "MCG-NJU/PixNerd-XXL-P16-T2I",
+  "revision": "9fa8836b553976b88a3b27649ed1628499e02bf9",
+  "text_revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+  "gpu": "Tesla T4",
+  "visible_devices": null,
+  "torch": "2.11.0+cu130",
+  "inputs": {
+    "own1": "images/own/own1.jpg",
+    "own2": "images/own/own2.jpg",
+    "web": "images/web/web.jpg",
+    "drawing1": "images/drawings/drawing1.jpg",
+    "drawing2": "images/drawings/drawing2.jpg"
+  },
+  "section_1_image": "Brick building facade in warm sunlight",
+  "blur_selection": "Lowest full-image MSE among sigma=1,2,4,8,16, measured before clipping",
+  "blur_sigma": {
+    "0.25": 8.0,
+    "0.5": 2.0,
+    "0.75": 1.0
+  },
+  "velocity_signed_limit": 4.112052917480469,
+  "velocity_error_limits": [
+    0.0,
+    1.4159245491027832
+  ],
+  "velocity_rms_mean": {
+    "0.25": 0.11555703729391098,
+    "0.5": 0.07672423124313354,
+    "0.75": 0.05171578750014305
+  },
+  "reconstruction_mse": {
+    "blur": 0.04465465992689133,
+    "one_step": 0.010660114698112011,
+    "euler": 0.012644636444747448
+  },
+  "euler_checks": "50 full steps, 25 half steps, shortened final step passed",
+  "cfg_zero_check": true,
+  "edit_prompts": {
+    "campanile": "a photograph of a lighthouse on a rocky coast",
+    "my_image_1": "a photograph of an old brick apartment building covered in flowering green vines, warm afternoon sunlight",
+    "my_image_2": "a photograph of a red leather notebook with a black elastic strap resting on a canvas bag on a car seat"
+  },
+  "rotation_involution_check": true,
+  "anagram_prompts": [
+    [
+      "an oil painting of a dog",
+      "an oil painting of a snowy mountain landscape"
+    ],
+    [
+      "a watercolor of a rabbit",
+      "a watercolor of a sailing ship"
+    ]
+  ],
+  "anagram_seeds": [
+    180,
+    181
+  ],
+  "hybrid_lowpass_sigma": 16,
+  "hybrid_prompts": [
+    [
+      "a lithograph of a lion",
+      "a lithograph of a mountain range"
+    ],
+    [
+      "a lithograph of an owl",
+      "a lithograph of autumn leaves"
+    ]
+  ],
+  "hybrid_seeds": [
+    180,
+    181
+  ],
+  "peak_memory_gib": 11.383468627929688,
+  "missing_required_figures": [],
+  "parta_figures_complete": true
+}

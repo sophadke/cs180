@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project 3 — Fun with Flow Models — Sohum Phadke</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+  /* Skeleton helpers: delete once the page is finished. */
+  .p2 p.todo { border: 2px dashed #c33; padding: 6px 10px; color: #c33; font-style: italic; }
+  .p2 figure.missing img { display: none; }
+  .p2 figure.missing::before {
+    content: "missing: " attr(data-file); display: flex; align-items: center; justify-content: center;
+    aspect-ratio: 1; border: 2px dashed #999; color: #777; font-size: 11px; padding: 6px;
+    text-align: center; word-break: break-all;
+  }
+  .p2 figure.rot180 img { transform: rotate(180deg); }
+  .p2 figure.shrink img { width: 25%; display: block; margin: 0 auto; }
+</style>
+</head>
+<body>
+
+  <!-- Menu bar -->
+  <nav class="menubar">
+    <a class="menu-item menu-item--bold back-link" href="../index.html">← Finder</a>
+    <a class="menu-item" href="project3-parta.html">Part A</a>
+    <a class="menu-item" href="project3-partb.html">Part B</a>
+    <span class="menu-item">View</span>
+    <span class="menu-item">Special</span>
+    <span class="menubar-clock">12:00 PM</span>
+  </nav>
+
+  <main class="desktop">
+
+    <!-- Hero window -->
+    <section class="window">
+      <div class="titlebar">
+        <span class="titlebar-box"></span>
+        <h1 class="titlebar-title">Project 3</h1>
+      </div>
+      <div class="window-body hero-body">
+        <p class="kicker">CS 180 · Computational Photography</p>
+        <h2 class="hero-headline">Fun with Flow Models</h2>
+        <p class="hero-sub">TODO: one-paragraph overview of the project.</p>
+        <p class="hero-byline">by <strong>Sohum Phadke</strong> &nbsp;/&nbsp; Fall 2026 &nbsp;/&nbsp; <a href="https://cal-cs180.github.io/fa26/hw/proj3-flow/index.html">assignment</a></p>
+      </div>
+      <div class="rainbow-bar"></div>
+    </section>
+
+    <!-- Contents -->
+    <section class="window">
+      <div class="titlebar titlebar--thin">
+        <span class="titlebar-box"></span>
+        <h2 class="titlebar-title">Contents</h2>
+      </div>
+      <div class="window-body">
+        <p class="folder-label">22 items</p>
+        <ul class="p2-toc">
+          <li><a href="#a11">1.1 Noisy training inputs</a></li>
+          <li><a href="#a12">1.2 Classical denoising</a></li>
+          <li><a href="#a13">1.3 One-step denoising</a></li>
+          <li><a href="#a14">1.4 Visualizing velocity</a></li>
+          <li><a href="#a15">1.5 Euler sampling</a></li>
+          <li><a href="#a16">1.6 Generating from noise</a></li>
+          <li><a href="#a21">2.1 Classifier-free guidance</a></li>
+          <li><a href="#a31">3.1 Image-to-image editing</a></li>
+          <li><a href="#a32">3.2 Text-guided editing</a></li>
+          <li><a href="#a33">3.3 Visual anagrams</a></li>
+          <li><a href="#a34">3.4 Hybrid images</a></li>
+          <li><a href="#abw">Part A Bells &amp; Whistles</a></li>
+          <li><a href="project3-partb.html">B1.1–1.2 UNet &amp; noising</a></li>
+          <li><a href="#b121">B1.2.1 Training the denoiser</a></li>
+          <li><a href="#b122">B1.2.2 Out-of-distribution</a></li>
+          <li><a href="#b123">B1.2.3 Denoising pure noise</a></li>
+          <li><a href="#b22">B2.1–2.2 Time-conditioned UNet</a></li>
+          <li><a href="#b23">B2.3 Time-conditioned samples</a></li>
+          <li><a href="#b25">B2.4–2.5 Class-conditioned UNet</a></li>
+          <li><a href="#b26">B2.6 Class-conditioned samples</a></li>
+          <li><a href="#bbw">Part B Bells &amp; Whistles</a></li>
+          <li><a href="#learned">What I learned</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="window part-divider">
+      <div class="window-body"><p class="kicker">Part A · Exploring the Power of Flow Models (PixNerd)</p></div>
+      <div class="rainbow-bar"></div>
+    </section>
+
+    <section class="window" id="a11">
+      <div class="titlebar titlebar--thin">
+        <span class="titlebar-box"></span>
+        <h2 class="titlebar-title">1.1 Constructing Noisy Training Inputs</h2>
+      </div>
+      <div class="window-body p2">
+<p class="todo">TODO: Which image you chose and why. Implementation of <code>interpolate</code>.</p>
+<figure class="wide"><img src="results/partA/training_inputs.png" alt="Original and x&lt;sub&gt;t&lt;/sub&gt; at t = 0.25, 0.50, 0.75 (same noise)"><figcaption>Original and x<sub>t</sub> at t = 0.25, 0.50, 0.75 (same noise)</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="window" id="a12">
+      <div class="titlebar titlebar--thin">
+        <span class="titlebar-box"></span>
+        <h2 class="titlebar-title">1.2 Classical Denoising</h2>
+      </div>
+      <div class="window-body p2">
+<p class="todo">TODO: Best blur sigma per t (shown in each panel) and why blur struggles at high noise.</p>
+<figure class="wide"><img src="results/partA/blur_0.25.png" alt="Noisy vs. Gaussian blur, t = 0.25"><figcaption>Noisy vs. Gaussian blur, t = 0.25</figcaption></figure>
+<figure class="wide"><img src="results/partA/blur_0.5.png" alt="Noisy vs. Gaussian blur, t = 0.5"><figcaption>Noisy vs. Gaussian blur, t = 0.5</figcaption></figure>
+<figure class="wide"><img src="results/partA/blur_0.75.png" alt="Noisy vs. Gaussian blur, t = 0.75"><figcaption>Noisy vs. Gaussian blur, t = 0.75</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="window" id="a13">
+      <div class="titlebar titlebar--thin">
+        <span class="titlebar-box"></span>
+        <h2 class="titlebar-title">1.3 One-Step Denoising</h2>
+      </div>
+      <div class="window-body p2">
+<p class="todo">TODO: Implementation of <code>one_step_denoise</code> (Eq. A.2) and observations.</p>
+<figure class="wide"><img src="results/partA/one_step_0.25.png" alt="Original, noisy, one-step estimate, t = 0.25"><figcaption>Original, noisy, one-step estimate, t = 0.25</figcaption></figure>
+<figure class="wide"><img src="results/partA/one_step_0.5.png" alt="Original, noisy, one-step estimate, t = 0.5"><figcaption>Original, noisy, one-step estimate, t = 0.5</figcaption></figure>
+<figure class="wide"><img src="results/partA/one_step_0.75.png" alt="Original, noisy, one-step estimate, t = 0.75"><figcaption>Original, noisy, one-step estimate, t = 0.75</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="window" id="a14">
+      <div class="titlebar titlebar--thin">
+        <span class="titlebar-box"></span>
+        <h2 class="titlebar-title">1.4 Visualizing Velocity</h2>
+      </div>
+      <div class="window-body p2">
+<p class="todo">TODO: What the predicted vs. ground-truth updates show; where the error is largest and why.</p>
+<figure class="mid"><img src="results/partA/velocity_original.png" alt="Original"><figcaption>Original</figcaption></figure>
+<figure class="wide"><img src="results/partA/velocity_0.25.png" alt="t = 0.25: noisy, predicted update, ground-truth update, RMS error"><figcaption>t = 0.25: noisy, predicted update, ground-truth update, RMS error</figcaption></figure>
+<figure class="wide"><img src="results/partA/velocity_0.50.png" alt="t = 0.50: noisy, predicted update, ground-truth update, RMS error"><figcaption>t = 0.50: noisy, predicted update, ground-truth update, RMS error</figcaption></figure>
+<figure class="wide"><img src="results/partA/velocity_0.75.png" alt="t = 0.75: noisy, predicted update, ground-truth update, RMS error"><figcaption>t = 0.75: noisy, predicted update, ground-truth update, RMS error</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="window" id="a15">
+      <div class="titlebar titlebar--thin">
+        <span class="titlebar-box"></span>
+        <h2 class="titlebar-title">1.5 Iterative Denoising with Euler Sampling</h2>
+      </div>
+      <div class="window-body p2">
+<p class="todo">TODO: Implementation of <code>euler_sample</code> (h = 0.02, shortened last step). Compare the three methods.</p>
+<figure class="wide"><img src="results/partA/trajectory.png" alt="Euler trajectory from t = 0.50: initial state, every 5th update, final"><figcaption>Euler trajectory from t = 0.50: initial state, every 5th update, final</figcaption></figure>
+<figure class="wide"><img src="results/partA/comparison.png" alt="Original, Gaussian blur, one-step, Euler (same t = 0.50 input)"><figcaption>Original, Gaussian blur, one-step, Euler (same t = 0.50 input)</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="window" id="a16">
+      <div class="titlebar titlebar--thin">
+        <span class="titlebar-box"></span>
+        <h2 class="titlebar-title">1.6 Generating Images from Noise</h2>
+      </div>
+      <div class="window-body p2">
+<p class="todo">TODO: What do the 5 samples from pure noise look like? ("a high quality photo")</p>
+<figure class="wide"><img src="results/partA/conditional_samples.png" alt="Seeds 180&amp;ndash;184, no guidance"><figcaption>Seeds 180&ndash;184, no guidance</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="window" id="a21">
+      <div class="titlebar titlebar--thin">
+        <span class="titlebar-box"></span>
+        <h2 class="titlebar-title">2.1 Classifier-Free Guidance (CFG)</h2>
+      </div>
+      <div class="window-body p2">
+<p class="todo">TODO: Implementation of <code>cfg_velocity</code> (w = 7). Compare against 1.6 (same noises).</p>
+<figure class="wide"><img src="results/partA/cfg_samples.png" alt="Seeds 180&amp;ndash;184, CFG w = 7"><figcaption>Seeds 180&ndash;184, CFG w = 7</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="window" id="a31">
+      <div class="titlebar titlebar--thin">
+        <span class="titlebar-box"></span>
+        <h2 class="titlebar-title">3.1 Image-to-Image Editing</h2>
+      </div>
+      <div class="window-body p2">
+<p class="todo">TODO: Explain SDEdit-style editing: more noise (smaller t<sub>start</sub>) = bigger edit.</p>
+<p class="folder-label">Campanile</p>
+<figure class="wide"><img src="results/partA/edit_campanile.png" alt="Original, then t&lt;sub&gt;start&lt;/sub&gt; = 0.02, 0.04, 0.06, 0.10, 0.14, 0.25, 0.50"><figcaption>Original, then t<sub>start</sub> = 0.02, 0.04, 0.06, 0.10, 0.14, 0.25, 0.50</figcaption></figure>
+<p class="folder-label">My image 1</p>
+<figure class="wide"><img src="results/partA/edit_my_image_1.png" alt="Original, then t&lt;sub&gt;start&lt;/sub&gt; = 0.02, 0.04, 0.06, 0.10, 0.14, 0.25, 0.50"><figcaption>Original, then t<sub>start</sub> = 0.02, 0.04, 0.06, 0.10, 0.14, 0.25, 0.50</figcaption></figure>
+<p class="folder-label">My image 2</p>
+<figure class="wide"><img src="results/partA/edit_my_image_2.png" alt="Original, then t&lt;sub&gt;start&lt;/sub&gt; = 0.02, 0.04, 0.06, 0.10, 0.14, 0.25, 0.50"><figcaption>Original, then t<sub>start</sub> = 0.02, 0.04, 0.06, 0.10, 0.14, 0.25, 0.50</figcaption></figure>
+<p class="folder-label">Web image</p>
+<figure class="wide"><img src="results/partA/edit_web_image.png" alt="Original, then t&lt;sub&gt;start&lt;/sub&gt; = 0.02, 0.04, 0.06, 0.10, 0.14, 0.25, 0.50"><figcaption>Original, then t<sub>start</sub> = 0.02, 0.04, 0.06, 0.10, 0.14, 0.25, 0.50</figcaption></figure>
+<p class="folder-label">Hand drawing 1</p>
+<figure class="wide"><img src="results/partA/edit_drawing_1.png" alt="Original, then t&lt;sub&gt;start&lt;/sub&gt; = 0.02, 0.04, 0.06, 0.10, 0.14, 0.25, 0.50"><figcaption>Original, then t<sub>start</sub> = 0.02, 0.04, 0.06, 0.10, 0.14, 0.25, 0.50</figcaption></figure>
+<p class="folder-label">Hand drawing 2</p>
+<figure class="wide"><img src="results/partA/edit_drawing_2.png" alt="Original, then t&lt;sub&gt;start&lt;/sub&gt; = 0.02, 0.04, 0.06, 0.10, 0.14, 0.25, 0.50"><figcaption>Original, then t<sub>start</sub> = 0.02, 0.04, 0.06, 0.10, 0.14, 0.25, 0.50</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="window" id="a32">
+      <div class="titlebar titlebar--thin">
+        <span class="titlebar-box"></span>
+        <h2 class="titlebar-title">3.2 Text-Guided Image Editing</h2>
+      </div>
+      <div class="window-body p2">
+<p class="todo">TODO: Observations on where the prompt vs. the original image wins.</p>
+<p class="folder-label">Campanile</p>
+<figure class="wide"><img src="results/partA/text_edit_campanile.png" alt="Prompt in panel title; t&lt;sub&gt;start&lt;/sub&gt; = 0.02 &amp;rarr; 0.50"><figcaption>Prompt in panel title; t<sub>start</sub> = 0.02 &rarr; 0.50</figcaption></figure>
+<p class="folder-label">My image 1</p>
+<figure class="wide"><img src="results/partA/text_edit_my_image_1.png" alt="Prompt in panel title; t&lt;sub&gt;start&lt;/sub&gt; = 0.02 &amp;rarr; 0.50"><figcaption>Prompt in panel title; t<sub>start</sub> = 0.02 &rarr; 0.50</figcaption></figure>
+<p class="folder-label">My image 2</p>
+<figure class="wide"><img src="results/partA/text_edit_my_image_2.png" alt="Prompt in panel title; t&lt;sub&gt;start&lt;/sub&gt; = 0.02 &amp;rarr; 0.50"><figcaption>Prompt in panel title; t<sub>start</sub> = 0.02 &rarr; 0.50</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="window" id="a33">
+      <div class="titlebar titlebar--thin">
+        <span class="titlebar-box"></span>
+        <h2 class="titlebar-title">3.3 Visual Anagrams</h2>
+      </div>
+      <div class="window-body p2">
+<p class="todo">TODO: Implementation of <code>visual_anagrams</code> (rotate 180&deg;, average CFG velocities).</p>
+<p class="folder-label">Anagram 1</p>
+<figure class="wide"><img src="results/partA/anagram_views_0.png" alt="Upright (left) and rotated 180&amp;deg; (right)"><figcaption>Upright (left) and rotated 180&deg; (right)</figcaption></figure>
+<p class="folder-label">Anagram 2</p>
+<figure class="wide"><img src="results/partA/anagram_views_1.png" alt="Upright (left) and rotated 180&amp;deg; (right)"><figcaption>Upright (left) and rotated 180&deg; (right)</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="window" id="a34">
+      <div class="titlebar titlebar--thin">
+        <span class="titlebar-box"></span>
+        <h2 class="titlebar-title">3.4 Hybrid Images</h2>
+      </div>
+      <div class="window-body p2">
+<p class="todo">TODO: Implementation of <code>make_hybrids</code> (lowpass of v<sub>a</sub> + highpass of v<sub>b</sub>, kernel 265, sigma 16). The small copy simulates viewing from far away.</p>
+<p class="folder-label">Hybrid 1</p>
+<div class="fig-row fig-2">
+  <figure><img src="results/partA/hybrid_0.png" alt="Close: &lt;code&gt;a lithograph of a mountain range&lt;/code&gt;"><figcaption>Close: <code>a lithograph of a mountain range</code></figcaption></figure>
+  <figure class="shrink"><img src="results/partA/hybrid_0.png" alt="Far: &lt;code&gt;a lithograph of a lion&lt;/code&gt;"><figcaption>Far: <code>a lithograph of a lion</code></figcaption></figure>
+</div>
+<p class="folder-label">Hybrid 2</p>
+<div class="fig-row fig-2">
+  <figure><img src="results/partA/hybrid_1.png" alt="Close: &lt;code&gt;a lithograph of autumn leaves&lt;/code&gt;"><figcaption>Close: <code>a lithograph of autumn leaves</code></figcaption></figure>
+  <figure class="shrink"><img src="results/partA/hybrid_1.png" alt="Far: &lt;code&gt;a lithograph of an owl&lt;/code&gt;"><figcaption>Far: <code>a lithograph of an owl</code></figcaption></figure>
+</div>
+      </div>
+    </section>
+
+    <section class="window" id="abw">
+      <div class="titlebar titlebar--thin">
+        <span class="titlebar-box"></span>
+        <h2 class="titlebar-title">Part A · Bells &amp; Whistles (optional)</h2>
+      </div>
+      <div class="window-body p2">
+<p class="todo">TODO: Optional for CS180 (required for CS280A): extra anagram transforms, course logo, own ideas. Delete this section if unused.</p>
+      </div>
+    </section>
+
+    <section class="window part-divider">
+      <div class="window-body"><p class="kicker">Part B · Flow Matching from Scratch (MNIST)</p></div>
+      <div class="rainbow-bar"></div>
+    </section>
+
+    <section class="window" id="b12">
+      <div class="titlebar titlebar--thin">
+        <span class="titlebar-box"></span>
+        <h2 class="titlebar-title">1.1–1.2 UNet and Noising Process</h2>
+      </div>
+      <div class="window-body p2">
+<p class="todo">TODO: Brief description of the UNet (Conv / DownConv / UpConv / Flatten / Unflatten / Concat, D = 128).</p>
+<p class="folder-label">Noising process, &sigma; = 0.0, 0.2, 0.4, 0.5, 0.6, 0.8, 1.0</p>
+<figure class="wide"><img src="results/partB/1_2_noising.png" alt="Noising process"><figcaption>z = x + &sigma;&epsilon;</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="window" id="b121">
+      <div class="titlebar titlebar--thin">
+        <span class="titlebar-box"></span>
+        <h2 class="titlebar-title">1.2.1 Training the Single-Step Denoiser</h2>
+      </div>
+      <div class="window-body p2">
+<p class="todo">TODO: Training setup: &sigma; = 0.5, batch 256, 5 epochs, Adam lr 1e-4.</p>
+<figure class="mid"><img src="results/partB/1_2_1_loss.png" alt="Loss"><figcaption>Training loss</figcaption></figure>
+<div class="fig-row fig-2">
+  <figure><img src="results/partB/1_2_1_epoch1.png" alt="Test set, after epoch 1"><figcaption>Test set, after epoch 1</figcaption></figure>
+  <figure><img src="results/partB/1_2_1_epoch5.png" alt="Test set, after epoch 5"><figcaption>Test set, after epoch 5</figcaption></figure>
+</div>
+      </div>
+    </section>
+
+    <section class="window" id="b122">
+      <div class="titlebar titlebar--thin">
+        <span class="titlebar-box"></span>
+        <h2 class="titlebar-title">1.2.2 Out-of-Distribution Testing</h2>
+      </div>
+      <div class="window-body p2">
+<p class="todo">TODO: How the &sigma; = 0.5 denoiser handles other noise levels (same test image).</p>
+<figure class="wide"><img src="results/partB/1_2_2_ood.png" alt="OOD"><figcaption>&sigma; = 0.0, 0.2, 0.4, 0.5, 0.6, 0.8, 1.0</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="window" id="b123">
+      <div class="titlebar titlebar--thin">
+        <span class="titlebar-box"></span>
+        <h2 class="titlebar-title">1.2.3 Denoising Pure Noise</h2>
+      </div>
+      <div class="window-body p2">
+<figure class="mid"><img src="results/partB/1_2_3_loss.png" alt="Loss"><figcaption>Training loss (pure noise input)</figcaption></figure>
+<div class="fig-row fig-2">
+  <figure><img src="results/partB/1_2_3_epoch1.png" alt="After epoch 1"><figcaption>After epoch 1</figcaption></figure>
+  <figure><img src="results/partB/1_2_3_epoch5.png" alt="After epoch 5"><figcaption>After epoch 5</figcaption></figure>
+</div>
+<p class="todo">TODO: Patterns observed, relation to digits 0&ndash;9, and why (MSE &rarr; centroid of training set).</p>
+      </div>
+    </section>
+
+    <section class="window" id="b22">
+      <div class="titlebar titlebar--thin">
+        <span class="titlebar-box"></span>
+        <h2 class="titlebar-title">2.1–2.2 Time-Conditioned UNet &amp; Training</h2>
+      </div>
+      <div class="window-body p2">
+<p class="todo">TODO: How t is injected (FCBlocks, unflatten * t1, up1 * t2); training setup (batch 64, D = 64, Adam 1e-2, ExponentialLR).</p>
+<figure class="mid"><img src="results/partB/2_2_loss.png" alt="Loss"><figcaption>Time-conditioned UNet training loss</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="window" id="b23">
+      <div class="titlebar titlebar--thin">
+        <span class="titlebar-box"></span>
+        <h2 class="titlebar-title">2.3 Sampling from the Time-Conditioned UNet</h2>
+      </div>
+      <div class="window-body p2">
+<p class="todo">TODO: Sampling procedure (Algorithm B.2) and comments on quality.</p>
+<div class="fig-row fig-3">
+  <figure><img src="results/partB/2_3_epoch1.png" alt="Epoch 1"><figcaption>Epoch 1</figcaption></figure>
+  <figure><img src="results/partB/2_3_epoch5.png" alt="Epoch 5"><figcaption>Epoch 5</figcaption></figure>
+  <figure><img src="results/partB/2_3_epoch10.png" alt="Epoch 10"><figcaption>Epoch 10</figcaption></figure>
+</div>
+      </div>
+    </section>
+
+    <section class="window" id="b25">
+      <div class="titlebar titlebar--thin">
+        <span class="titlebar-box"></span>
+        <h2 class="titlebar-title">2.4–2.5 Class-Conditioned UNet &amp; Training</h2>
+      </div>
+      <div class="window-body p2">
+<p class="todo">TODO: Class conditioning: one-hot c, p<sub>uncond</sub> = 0.1, unflatten = c1 * unflatten + t1, up1 = c2 * up1 + t2.</p>
+<figure class="mid"><img src="results/partB/2_5_loss.png" alt="Loss"><figcaption>Class-conditioned UNet training loss</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="window" id="b26">
+      <div class="titlebar titlebar--thin">
+        <span class="titlebar-box"></span>
+        <h2 class="titlebar-title">2.6 Sampling from the Class-Conditioned UNet</h2>
+      </div>
+      <div class="window-body p2">
+<p class="todo">TODO: CFG with &gamma; = 5.0, 4 instances of each digit.</p>
+<div class="fig-row fig-3">
+  <figure><img src="results/partB/2_6_epoch1.png" alt="Epoch 1"><figcaption>Epoch 1</figcaption></figure>
+  <figure><img src="results/partB/2_6_epoch5.png" alt="Epoch 5"><figcaption>Epoch 5</figcaption></figure>
+  <figure><img src="results/partB/2_6_epoch10.png" alt="Epoch 10"><figcaption>Epoch 10</figcaption></figure>
+</div>
+<p class="folder-label">Without the learning-rate scheduler</p>
+<figure class="mid"><img src="results/partB/2_6_no_scheduler.png" alt="No scheduler"><figcaption>Samples trained without ExponentialLR</figcaption></figure>
+<p class="todo">TODO: What you changed to compensate for removing the scheduler.</p>
+      </div>
+    </section>
+
+    <section class="window" id="bbw">
+      <div class="titlebar titlebar--thin">
+        <span class="titlebar-box"></span>
+        <h2 class="titlebar-title">Part B · Bells &amp; Whistles (optional)</h2>
+      </div>
+      <div class="window-body p2">
+<p class="todo">TODO: Optional for CS180 (required for CS280A): better time-only UNet, other datasets. Delete if unused.</p>
+      </div>
+    </section>
+
+    <section class="window" id="learned">
+      <div class="titlebar titlebar--thin">
+        <span class="titlebar-box"></span>
+        <h2 class="titlebar-title">What I Learned</h2>
+      </div>
+      <div class="window-body p2">
+<p class="todo">TODO: Reflection: what you learned from the project.</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <section class="window">
+      <div class="window-body footer-body">
+        <p>CS 180 — Computational Photography</p>
+        <p class="footer-small"><a class="back-link" href="../index.html">← back to all projects</a></p>
+      </div>
+    </section>
+
+  </main>
+
+<script>
+  // Skeleton helper: show the expected filename wherever an image hasn't been added yet.
+  document.querySelectorAll('.p2 figure img').forEach(function (img) {
+    function mark() {
+      var f = img.closest('figure');
+      f.classList.add('missing');
+      f.dataset.file = img.getAttribute('src');
+    }
+    img.addEventListener('error', mark);
+    if (img.complete && img.naturalWidth === 0) mark();
+  });
+</script>
+</body>
+</html>
