@@ -8,7 +8,7 @@ from scipy.signal import convolve2d
 from skimage.transform import resize
 
 from convolution import conv_four_loops, conv_two_loops
-from utils import gaussian_kernel, have, img_path, load, save, save_json
+from utils import gaussian_kernel, have, img_path, lo ad, save, save_json
 import os
 
 D_x = np.array([[1, -1]])

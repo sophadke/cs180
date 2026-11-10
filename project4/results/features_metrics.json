@@ -1,0 +1,50 @@
+{
+  "parameters": {
+    "support": 40,
+    "descriptor": 8,
+    "sigma": 2,
+    "min_std": 1e-06,
+    "ratio_threshold": 0.8,
+    "distance": "Euclidean",
+    "equivalent_ssd_ratio": 0.64
+  },
+  "images": {
+    "bank_01": {
+      "anms_count": 500,
+      "descriptors": 500,
+      "discarded": 0
+    },
+    "bank_03": {
+      "anms_count": 500,
+      "descriptors": 500,
+      "discarded": 0
+    },
+    "bank_04": {
+      "anms_count": 500,
+      "descriptors": 500,
+      "discarded": 0
+    }
+  },
+  "pairs": {
+    "bank_01_to_bank_03": {
+      "queries": 500,
+      "accepted": 178,
+      "threshold_counts": {
+        "0.6": 135,
+        "0.7": 156,
+        "0.8": 178,
+        "0.9": 254
+      }
+    },
+    "bank_03_to_bank_04": {
+      "queries": 500,
+      "accepted": 90,
+      "threshold_counts": {
+        "0.6": 37,
+        "0.7": 61,
+        "0.8": 90,
+        "0.9": 152
+      }
+    }
+  }
+}

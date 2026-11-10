@@ -1,0 +1,339 @@
+{
+  "parameters": {
+    "scales": [
+      1.0,
+      0.7071067811865476,
+      0.5
+    ],
+    "corners_per_scale": 500,
+    "ratio": 0.8,
+    "ransac_threshold_px": 3,
+    "max_trials": 10000,
+    "confidence": 0.999,
+    "seed": 180,
+    "max_image_side": 1024
+  },
+  "scenes": {
+    "bank": {
+      "images": [
+        "bank_01",
+        "bank_03"
+      ],
+      "working_shapes": [
+        [
+          1024,
+          768,
+          3
+        ],
+        [
+          1024,
+          768,
+          3
+        ]
+      ],
+      "levels": [
+        [
+          {
+            "scale": 1.0,
+            "shape": [
+              1024,
+              768
+            ],
+            "candidates": 17704,
+            "descriptors": 500
+          },
+          {
+            "scale": 0.7071067811865476,
+            "shape": [
+              724,
+              543
+            ],
+            "candidates": 8936,
+            "descriptors": 500
+          },
+          {
+            "scale": 0.5,
+            "shape": [
+              512,
+              384
+            ],
+            "candidates": 4241,
+            "descriptors": 500
+          }
+        ],
+        [
+          {
+            "scale": 1.0,
+            "shape": [
+              1024,
+              768
+            ],
+            "candidates": 17147,
+            "descriptors": 500
+          },
+          {
+            "scale": 0.7071067811865476,
+            "shape": [
+              724,
+              543
+            ],
+            "candidates": 8467,
+            "descriptors": 500
+          },
+          {
+            "scale": 0.5,
+            "shape": [
+              512,
+              384
+            ],
+            "candidates": 4061,
+            "descriptors": 500
+          }
+        ]
+      ],
+      "ratio_passes": 556,
+      "single_scale": {
+        "matches": 167,
+        "inliers": 145,
+        "median_error_px": 0.9851939413240233
+      },
+      "mean_error_px": 1.240861560916785,
+      "matches": 514,
+      "inliers": 442,
+      "median_error_px": 1.1315670092540773,
+      "trials": 14,
+      "cross_scale_inliers": 1,
+      "H": [
+        [
+          0.7900899646577184,
+          0.0399248961304346,
+          151.08541665913526
+        ],
+        [
+          -0.17921849308089577,
+          0.9047881632565381,
+          62.259002717410354
+        ],
+        [
+          -0.00026087439329820495,
+          -1.359663703006657e-05,
+          1.0
+        ]
+      ]
+    },
+    "street": {
+      "images": [
+        "street_04",
+        "street_02"
+      ],
+      "working_shapes": [
+        [
+          1024,
+          768,
+          3
+        ],
+        [
+          1024,
+          768,
+          3
+        ]
+      ],
+      "levels": [
+        [
+          {
+            "scale": 1.0,
+            "shape": [
+              1024,
+              768
+            ],
+            "candidates": 20535,
+            "descriptors": 500
+          },
+          {
+            "scale": 0.7071067811865476,
+            "shape": [
+              724,
+              543
+            ],
+            "candidates": 10107,
+            "descriptors": 500
+          },
+          {
+            "scale": 0.5,
+            "shape": [
+              512,
+              384
+            ],
+            "candidates": 4838,
+            "descriptors": 500
+          }
+        ],
+        [
+          {
+            "scale": 1.0,
+            "shape": [
+              1024,
+              768
+            ],
+            "candidates": 18581,
+            "descriptors": 500
+          },
+          {
+            "scale": 0.7071067811865476,
+            "shape": [
+              724,
+              543
+            ],
+            "candidates": 9299,
+            "descriptors": 500
+          },
+          {
+            "scale": 0.5,
+            "shape": [
+              512,
+              384
+            ],
+            "candidates": 4557,
+            "descriptors": 500
+          }
+        ]
+      ],
+      "ratio_passes": 239,
+      "single_scale": {
+        "matches": 70,
+        "inliers": 63,
+        "median_error_px": 1.0567426327743823
+      },
+      "mean_error_px": 1.200034026355839,
+      "matches": 217,
+      "inliers": 181,
+      "median_error_px": 1.0691870675194544,
+      "trials": 26,
+      "cross_scale_inliers": 2,
+      "H": [
+        [
+          1.4438961309833724,
+          -0.016220351384149265,
+          -359.6065664578982
+        ],
+        [
+          0.2850241063053437,
+          1.2893951893727187,
+          -149.15429557104648
+        ],
+        [
+          0.0005593929043122896,
+          6.060276599503679e-06,
+          1.0
+        ]
+      ]
+    },
+    "river": {
+      "images": [
+        "river_01",
+        "river_02"
+      ],
+      "working_shapes": [
+        [
+          683,
+          1024,
+          3
+        ],
+        [
+          683,
+          1024,
+          3
+        ]
+      ],
+      "levels": [
+        [
+          {
+            "scale": 1.0,
+            "shape": [
+              683,
+              1024
+            ],
+            "candidates": 18051,
+            "descriptors": 500
+          },
+          {
+            "scale": 0.7071067811865476,
+            "shape": [
+              483,
+              724
+            ],
+            "candidates": 8246,
+            "descriptors": 500
+          },
+          {
+            "scale": 0.5,
+            "shape": [
+              342,
+              512
+            ],
+            "candidates": 3667,
+            "descriptors": 500
+          }
+        ],
+        [
+          {
+            "scale": 1.0,
+            "shape": [
+              683,
+              1024
+            ],
+            "candidates": 18297,
+            "descriptors": 500
+          },
+          {
+            "scale": 0.7071067811865476,
+            "shape": [
+              483,
+              724
+            ],
+            "candidates": 8293,
+            "descriptors": 500
+          },
+          {
+            "scale": 0.5,
+            "shape": [
+              342,
+              512
+            ],
+            "candidates": 3653,
+            "descriptors": 500
+          }
+        ]
+      ],
+      "ratio_passes": 461,
+      "single_scale": {
+        "matches": 140,
+        "inliers": 103,
+        "median_error_px": 0.6674304127384835
+      },
+      "mean_error_px": 0.9774135510091836,
+      "matches": 421,
+      "inliers": 303,
+      "median_error_px": 0.8548003306529461,
+      "trials": 59,
+      "cross_scale_inliers": 2,
+      "H": [
+        [
+          1.2425618574422765,
+          0.0011849638388072286,
+          -398.6594857104667
+        ],
+        [
+          0.0799853182267689,
+          1.153710872846925,
+          -45.057160597824655
+        ],
+        [
+          0.00024240298301681887,
+          -4.816612415163814e-06,
+          1.0
+        ]
+      ]
+    }
+  }
+}

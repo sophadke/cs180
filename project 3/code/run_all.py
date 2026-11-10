@@ -1,11 +1,3 @@
-"""Run every part of Project 2 and fill the timing table into web/index.html.
-
-    cd code
-    python3 run_all.py
-
-Parts whose input images are missing are skipped with a message telling
-you which files to add to the images/ folder.
-"""
 import json
 import os
 import re

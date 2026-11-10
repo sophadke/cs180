@@ -1,10 +1,3 @@
-"""Click alignment points for a hybrid-image pair and save them to images/<pair>_points.json.
-
-Usage:  python3 pick_points.py DerekPicture.jpg nutmeg.jpg derek_nutmeg
-
-A window opens for each image. Click the same two features on both
-(for faces: left eye, then right eye), and the window closes by itself.
-"""
 import json
 import os
 import sys
@@ -22,7 +15,7 @@ def pick(name):
     pts = plt.ginput(2, timeout=0)
     plt.close()
     h, w = img.shape[:2]
-    # store as fractions of width/height so they still work after resizing
+   
     return [[x / w, y / h] for x, y in pts]
 
 

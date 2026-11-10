@@ -2,3 +2,7 @@
 **/__pycache__/
 *.tif
 *.tiff
+*.pt
+*.pth
+*.ckpt
+.ipynb_checkpoints/

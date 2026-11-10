@@ -1,0 +1,28 @@
+{
+  "bank_01": {
+    "candidates": 17704,
+    "selected": 500,
+    "smallest_selected_radius": 25.079872407968907,
+    "sigma": 1,
+    "edge_discard": 20,
+    "c_robust": 0.9,
+    "image_shape": [
+      1024,
+      768,
+      3
+    ]
+  },
+  "bank_03": {
+    "candidates": 17147,
+    "selected": 500,
+    "smallest_selected_radius": 24.698178070456937,
+    "sigma": 1,
+    "edge_discard": 20,
+    "c_robust": 0.9,
+    "image_shape": [
+      1024,
+      768,
+      3
+    ]
+  }
+}

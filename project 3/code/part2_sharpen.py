@@ -4,12 +4,10 @@ import numpy as np
 from utils import blur, conv, gaussian_kernel, have, load, save
 
 SIGMA = 2.0
-AMOUNTS = [0.5, 1, 2, 4]          # alpha values to compare
+AMOUNTS = [0.5, 1, 2, 4]         
 DEFAULT_ALPHA = 1.5
 
-# Images to sharpen: taj.jpg is required; add your own blurry photo as sharpen_mine.jpg
 TO_SHARPEN = ["taj.jpg", "sharpen_mine.jpg"]
-# A sharp photo to blur and then re-sharpen for evaluation
 SHARP_TEST = "sharp_test.jpg"
 
 
@@ -35,7 +33,6 @@ def show_steps(name, img):
     save(f"2_1_{stem}_sharpened.png", sharpen(img))
     for a in AMOUNTS:
         save(f"2_1_{stem}_alpha{a}.png", sharpen(img, alpha=a))
-    # Sanity check: the single-kernel result equals img + alpha * high
     two_step = np.clip(img + DEFAULT_ALPHA * high, 0, 1)
     print(f"  {name}: max |single filter - two step| = {np.abs(sharpen(img) - two_step).max():.2e}")
 

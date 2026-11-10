@@ -1,0 +1,5 @@
+rectify_notebook.jpg: own photograph, converted from IMG_2906.HEIC; original remains in Downloads.
+rectify_sudoku.jpg: OpenCV sample sudoku.png, converted to JPEG.
+https://github.com/opencv/opencv/blob/4.x/samples/data/sudoku.png
+https://raw.githubusercontent.com/opencv/opencv/4.x/samples/data/sudoku.png
+Downloaded 2026-10-27.
