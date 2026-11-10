@@ -1,7 +1,0 @@
-River panorama inputs: OpenCV opencv_extra stitching sample data.
-Original files retained without resizing or cropping.
-https://github.com/opencv/opencv_extra/tree/4.x/testdata/stitching
-https://raw.githubusercontent.com/opencv/opencv_extra/4.x/testdata/stitching/boat1.jpg
-https://raw.githubusercontent.com/opencv/opencv_extra/4.x/testdata/stitching/boat2.jpg
-Dataset usage documented at https://docs.opencv.org/4.13.0/d8/d19/tutorial_stitcher.html
-Downloaded 2026-10-27.
